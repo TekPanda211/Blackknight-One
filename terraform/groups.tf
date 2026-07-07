@@ -3,7 +3,7 @@ resource "azuread_group" "department_groups" {
     for group in flatten([
       for dept in local.departments : [
         for type in local.group_types : {
-          name = "${local.company_prefix}-${dept}-${type}"
+          name = "${local.naming_prefix}-${dept}-${type}"
         }
       ]
     ]) : group.name => group
@@ -12,5 +12,5 @@ resource "azuread_group" "department_groups" {
   display_name     = each.value.name
   security_enabled = true
 
-  description = "Terraform-managed IAM lab group for ${each.value.name}"
+  description = "${var.environment} Microsoft Entra ID security group managed by Terraform for ${each.value.name}."
 }

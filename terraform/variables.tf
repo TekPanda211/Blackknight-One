@@ -1,5 +1,15 @@
 variable "company_prefix" {
-  description = "Company prefix used for naming resources"
+  description = "Organization prefix used for naming Microsoft Entra ID resources."
   type        = string
-  default     = "BlackKnight"
+}
+
+variable "environment" {
+  description = "Deployment environment."
+
+  type = string
+
+  validation {
+    condition     = contains(["Lab", "Dev", "Test", "Prod"], var.environment)
+    error_message = "Environment must be Lab, Dev, Test, or Prod."
+  }
 }

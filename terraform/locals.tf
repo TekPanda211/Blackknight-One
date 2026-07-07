@@ -1,5 +1,6 @@
 locals {
-  company_prefix = var.company_prefix
+
+  naming_prefix = "${var.company_prefix}-${var.environment}"
 
   departments = [
     "IT",
@@ -17,5 +18,11 @@ locals {
     "Users",
     "Admins",
     "Readers"
+  ]
+
+  privileged_groups = [
+    "IT-Admins",
+    "Security-Admins",
+    "Engineering-Admins"
   ]
 }
