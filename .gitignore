@@ -1,0 +1,26 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Variable files
+*.tfvars
+*.tfvars.json
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Sensitive files
+terraform.rc
+terraform.rc.json
+
+# VS Code
+.vscode/
+
+# Windows
+Thumbs.db
+Desktop.ini
