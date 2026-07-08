@@ -1,0 +1,8 @@
+{
+  "Name": "Governance",
+  "DisplayName": "Access & Governance Engine",
+  "Version": "0.4.0-alpha",
+  "Enabled": true,
+  "EntryPoint": "Invoke-BlackKnightGovernance.ps1",
+  "Description": "Identity Governance, Access Packages, Entitlement Management, Administrative Units, Dynamic Groups, Access Reviews, and delegated access governance."
+}

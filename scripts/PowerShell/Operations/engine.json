@@ -1,0 +1,8 @@
+{
+  "Name": "Operations",
+  "DisplayName": "Operations Engine",
+  "Version": "0.4.0-alpha",
+  "Enabled": true,
+  "EntryPoint": "Invoke-BlackKnightOperations.ps1",
+  "Description": "Workforce lifecycle, partner operations, license operations, identity requests, and incident response workflows."
+}

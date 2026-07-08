@@ -1,25 +1,11 @@
 <#
 .SYNOPSIS
-BlackKnight One Core Engine
+Blackknight One Core Engine
 
 .DESCRIPTION
-The Core Engine is the entry point for BlackKnight One.
+The Core Engine is the entry point for Blackknight One.
 
-It discovers available engines, executes them, and prepares a unified
-platform report.
-
-Current Version:
-- Operations Engine
-
-Future Engines:
-- Identity
-- Trust
-- Governance
-- Endpoint
-- Security
-- Compliance
-- Reporting
-- AI
+It discovers enabled engines, executes them, and prepares the platform for unified reporting.
 #>
 
 [CmdletBinding()]
@@ -29,38 +15,45 @@ $BlackKnightVersion = "0.4.0-alpha"
 
 Write-Host ""
 Write-Host "=========================================" -ForegroundColor Cyan
-Write-Host "        BlackKnight One" -ForegroundColor Cyan
+Write-Host "        Blackknight One" -ForegroundColor Cyan
 Write-Host " Enterprise Identity Engineering Platform" -ForegroundColor Cyan
 Write-Host "=========================================" -ForegroundColor Cyan
 Write-Host ""
-Write-Host "Version : $BlackKnightVersion"
-Write-Host "Mission : Build • Coach • Mentor"
+Write-Host "Version    : $BlackKnightVersion"
+Write-Host "Mission    : Build • Coach • Mentor"
 Write-Host "North Star : One Source of Truth"
 Write-Host ""
 
 $Root = Split-Path $PSScriptRoot -Parent
 
-$GovernanceEngine = Join-Path $Root "Governance\Invoke-BlackKnightGovernance.ps1"
+$EngineManifests = Get-ChildItem -Path $Root -Filter "engine.json" -Recurse -ErrorAction SilentlyContinue
 
-if (Test-Path $GovernanceEngine) {
-    Write-Host "[+] Loading Governance Engine..." -ForegroundColor Green
-    & $GovernanceEngine
+if (!$EngineManifests) {
+    Write-Warning "No engine manifests found."
 }
 else {
-    Write-Warning "Governance Engine not found."
-}
+    foreach ($ManifestFile in $EngineManifests) {
+        $Manifest = Get-Content $ManifestFile.FullName -Raw | ConvertFrom-Json
 
-$OperationsEngine = Join-Path $Root "Operations\Invoke-BlackKnightOperations.ps1"
+        if ($Manifest.Enabled -ne $true) {
+            Write-Host "[-] Skipping disabled engine: $($Manifest.DisplayName)" -ForegroundColor Yellow
+            continue
+        }
 
-if (Test-Path $OperationsEngine) {
-    Write-Host "[+] Loading Operations Engine..." -ForegroundColor Green
-    & $OperationsEngine
-}
-else {
-    Write-Warning "Operations Engine not found."
+        $EngineFolder = Split-Path $ManifestFile.FullName -Parent
+        $EntryPoint = Join-Path $EngineFolder $Manifest.EntryPoint
+
+        if (Test-Path $EntryPoint) {
+            Write-Host "[+] Loading $($Manifest.DisplayName)..." -ForegroundColor Green
+            & $EntryPoint
+        }
+        else {
+            Write-Warning "Entry point not found for $($Manifest.DisplayName): $EntryPoint"
+        }
+    }
 }
 
 Write-Host ""
 Write-Host "=========================================" -ForegroundColor Cyan
-Write-Host " BlackKnight Core Complete" -ForegroundColor Cyan
+Write-Host " Blackknight Core Complete" -ForegroundColor Cyan
 Write-Host "=========================================" -ForegroundColor Cyan
