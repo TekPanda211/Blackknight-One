@@ -12,7 +12,7 @@
 
 ## What is Blackknight One?
 
-Blackknight One is an open-source enterprise identity engineering platform designed to help engineers build, govern, operate, and continuously validate Microsoft Entra ID and Microsoft 365 environments.
+Blackknight One is an open-source enterprise identity engineering platform for Microsoft Entra ID and Microsoft 365 that enables engineers to design, automate, govern, operate, and continuously validate enterprise identity environments.
 
 Rather than focusing solely on deployment, Blackknight One combines Infrastructure as Code, Microsoft Graph, PowerShell, automation, governance, reporting, and AI into a single engineering platform that measures confidence in enterprise identity.
 
@@ -116,18 +116,18 @@ Blackknight One follows a simple engineering philosophy:
 
 # Platform Components
 
-| Engine | Purpose |
-|----------|---------|
-| Identity | Discover and validate Microsoft Entra ID |
-| Trust | Evaluate Zero Trust posture |
-| Access & Governance | Identity Governance, Access Packages, Reviews |
-| Operations | Workforce lifecycle and daily identity operations |
-| Endpoint | Microsoft Intune and device compliance |
-| Security | Microsoft Sentinel and Microsoft Defender |
-| Compliance | Microsoft Purview and information governance |
-| Automation | Terraform, PowerShell, Microsoft Graph |
-| Reporting | Executive, engineering, and compliance reporting |
-| AI | Operational intelligence and assisted investigations |
+| Engine              | Purpose                                              |
+| ------------------- | ---------------------------------------------------- |
+| Identity            | Discover and validate Microsoft Entra ID             |
+| Trust               | Evaluate Zero Trust posture                          |
+| Access & Governance | Identity Governance, Access Packages, Reviews        |
+| Operations          | Workforce lifecycle and daily identity operations    |
+| Endpoint            | Microsoft Intune and device compliance               |
+| Security            | Microsoft Sentinel and Microsoft Defender            |
+| Compliance          | Microsoft Purview and information governance         |
+| Automation          | Terraform, PowerShell, Microsoft Graph               |
+| Reporting           | Executive, engineering, and compliance reporting     |
+| AI                  | Operational intelligence and assisted investigations |
 
 ---
 
@@ -206,18 +206,18 @@ blackknight-one
 
 # Roadmap
 
-| Version | Status | Focus |
-|----------|--------|-------|
-| v0.1 | ✅ | Foundation |
-| v0.2 | ✅ | Identity Architecture |
-| v0.3 | ✅ | Identity Governance |
-| v0.4 | 🚧 | Platform Services |
-| v0.5 | Planned | Microsoft Graph Identity Discovery |
-| v0.6 | Planned | Trust Engine |
-| v0.7 | Planned | Endpoint Engine |
-| v0.8 | Planned | Security Engine |
-| v0.9 | Planned | Compliance Engine |
-| v1.0 | Planned | Enterprise Trust Platform |
+| Version | Status  | Focus                              |
+| ------- | ------- | ---------------------------------- |
+| v0.1    | ✅       | Foundation                         |
+| v0.2    | ✅       | Identity Architecture              |
+| v0.3    | ✅       | Identity Governance                |
+| v0.4    | 🚧       | Platform Services                  |
+| v0.5    | Planned | Microsoft Graph Identity Discovery |
+| v0.6    | Planned | Trust Engine                       |
+| v0.7    | Planned | Endpoint Engine                    |
+| v0.8    | Planned | Security Engine                    |
+| v0.9    | Planned | Compliance Engine                  |
+| v1.0    | Planned | Enterprise Trust Platform          |
 
 ---
 
