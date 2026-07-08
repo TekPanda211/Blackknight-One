@@ -16,13 +16,13 @@ param(
     [switch]$ExportJson
 )
 
-$PlatformServices = Join-Path (Split-Path $PSScriptRoot -Parent) "Platform\Blackknight-Platform.ps1"
+$PlatformModule = Join-Path (Split-Path $PSScriptRoot -Parent) "Platform\Blackknight-Platform.psm1"
 
-if (Test-Path $PlatformServices) {
-    . $PlatformServices
+if (Test-Path $PlatformModule) {
+    Import-Module $PlatformModule -Force
 }
 else {
-    throw "Blackknight Platform Services not found at $PlatformServices"
+    throw "Blackknight Platform module not found at $PlatformModule"
 }
 
 function Write-BKSection {
