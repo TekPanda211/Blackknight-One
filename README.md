@@ -1,4 +1,4 @@
-# BlackKnight One
+# Blackknight One
 
 ## Enterprise Identity Engineering Platform
 
@@ -8,19 +8,19 @@
 
 > **Build • Coach • Mentor**
 
-BlackKnight One is an enterprise identity engineering platform that helps engineers design, automate, govern, and continuously validate Microsoft Entra ID and Microsoft 365 environments.
+Blackknight One is an enterprise identity engineering platform focused on designing, deploying, governing, operating, and continuously validating Microsoft Entra ID and Microsoft 365 environments.
 
-Built around Infrastructure as Code, Microsoft Graph, PowerShell, automation, and AI-assisted operational workflows, BlackKnight One focuses on delivering repeatable engineering practices that improve security, governance, and operational confidence.
+Built around Infrastructure as Code, Microsoft Graph, PowerShell, automation, and AI-assisted operational workflows, Blackknight One delivers repeatable engineering practices that improve security, governance, operational confidence, and enterprise trust.
 
 ---
 
-# Why BlackKnight One Exists
+# Why Blackknight One Exists
 
 Identity engineering is more than provisioning users and groups.
 
-It is the discipline of building secure, automated, governed, and continuously validated identity environments.
+It is the discipline of designing, governing, operating, and continuously validating enterprise identity systems.
 
-BlackKnight One exists to help engineers build those environments while sharing practical knowledge with the identity engineering community.
+Blackknight One exists to help engineers build trusted identity platforms while sharing practical knowledge with the identity engineering community.
 
 ---
 
@@ -32,7 +32,7 @@ Coach.
 
 Mentor.
 
-BlackKnight One exists to advance enterprise identity engineering through automation, documentation, and community-driven learning.
+Blackknight One advances enterprise identity engineering through automation, documentation, continuous validation, and community-driven learning.
 
 ---
 
@@ -46,15 +46,37 @@ Automation validates the difference.
 
 AI explains the results.
 
-BlackKnight One brings these capabilities together into a single engineering platform.
+Blackknight One brings these capabilities together into a single engineering platform.
 
 **One Source of Truth.**
 
 ---
 
+# North Star
+
+Every engine inside Blackknight One answers one question:
+
+> **Can I trust the current state of my environment?**
+
+Everything...
+
+Every Terraform deployment.
+
+Every Microsoft Graph query.
+
+Every PowerShell script.
+
+Every report.
+
+Every AI workflow.
+
+Exists to increase confidence through continuous verification.
+
+---
+
 # Platform Architecture
 
-![BlackKnight One Architecture](images/enterprise-iam-architecture.png)
+![Blackknight One Architecture](images/enterprise-iam-architecture.png)
 
 ---
 
@@ -62,61 +84,70 @@ BlackKnight One brings these capabilities together into a single engineering pla
 
 ## Identity Engine
 
-Microsoft Entra ID
+Designs and validates the identity foundation.
 
-Users
+Current capabilities
 
-Groups
-
-RBAC
-
-PIM
-
-Role Assignable Groups
-
-Enterprise Applications
+- Microsoft Entra ID
+- Users
+- Groups
+- RBAC
+- PIM
+- Role Assignable Groups
+- Enterprise Applications
+- Administrative Units
 
 ---
 
 ## Trust Engine
 
-Conditional Access
+Validates identity trust.
 
-Authentication Strengths
+Planned capabilities
 
-Identity Protection
-
-Named Locations
-
-Zero Trust
-
-Break Glass
+- Conditional Access
+- Authentication Strengths
+- Identity Protection
+- Named Locations
+- Zero Trust
+- Break Glass Accounts
+- Continuous Access Evaluation
 
 ---
 
 ## Access & Governance Engine
 
-The Access & Governance Engine defines how access is requested, approved, assigned, validated, reviewed, expired, and reported.
+Defines how access is requested, approved, assigned, validated, reviewed, expired, and reported.
 
-Current capabilities:
+Current capabilities
 
+- Identity Governance framework
 - Access Package framework
 - Entitlement Management model
-- Governance catalog
-- Access Package standard
+- Governance Catalog
+- Access Package standards
 - Governance maturity model
 - Administrative Unit planning
 - Dynamic Group planning
 - Access Review planning
+- Lifecycle Workflow planning
 - GDAP-inspired delegated access governance
+
+Future capabilities
+
+- Microsoft Graph discovery
+- Access Package deployment
+- Governance validation
+- Assignment Policy validation
+- Confidence scoring
 
 ---
 
 ## Operations Engine
 
-The Operations Engine supports day-to-day identity work that occurs after the tenant has been engineered.
+Supports day-to-day identity operations after the environment has been engineered.
 
-Capabilities include:
+Current capabilities
 
 - Workforce Lifecycle
 - Partner Operations
@@ -124,7 +155,7 @@ Capabilities include:
 - Identity Requests
 - Incident Response
 
-The Operations Engine follows the BlackKnight One model:
+Operational philosophy
 
 1. Provision
 2. Validate
@@ -138,9 +169,9 @@ Microsoft Intune
 
 Windows Autopilot
 
-Compliance Policies
-
 Configuration Profiles
+
+Compliance Policies
 
 Application Deployment
 
@@ -154,9 +185,9 @@ Microsoft Sentinel
 
 Microsoft Defender XDR
 
-Defender for Endpoint
+Microsoft Defender for Endpoint
 
-Defender for Office
+Microsoft Defender for Office 365
 
 Threat Hunting
 
@@ -170,7 +201,7 @@ Microsoft Purview
 
 Audit
 
-DLP
+Data Loss Prevention
 
 Retention
 
@@ -184,9 +215,9 @@ Records Management
 
 Terraform
 
-PowerShell
-
 Microsoft Graph
+
+PowerShell
 
 Azure CLI
 
@@ -208,6 +239,8 @@ Identity Health
 
 Configuration Drift
 
+Governance Reporting
+
 Compliance Reporting
 
 Markdown
@@ -222,152 +255,81 @@ Power BI
 
 ## AI Engine
 
-Copilot
+Microsoft Copilot
 
 OpenAI
 
 Investigation Assistance
 
+Operational Recommendations
+
 Executive Summaries
 
 Knowledge Assistance
 
-Operational Recommendations
+Engineering Guidance
+
+---
+
+# Current Release
+
+## v0.3.0-alpha
+
+Identity Governance Engine
+
+### Delivered
+
+- Governance Engine framework
+- Access Package model
+- Governance Catalog
+- Governance Standards
+- Governance Roadmap
+- Governance Maturity Model
+- Terraform Access Package framework
+- Governance JSON reporting
+- PowerShell Governance Engine
 
 ---
 
 # Roadmap
 
-## v0.1.0
-
-Foundation Engine ✅
-
----
-
-## v0.2.0
-
-Identity Architecture Engine ✅
-
----
-
-## v0.3.0
-
-Identity Governance Engine
-
-Administrative Units
-
-Access Packages
-
-Entitlement Management
-
-Access Reviews
-
-Dynamic Groups
-
-Lifecycle Workflows
-
-GDAP-inspired governance
-
----
-
-## v0.4.0
-
-Trust Engine
-
-Conditional Access
-
-Authentication Strengths
-
-Identity Protection
-
-Zero Trust
-
----
-
-## v0.5.0
-
-Application Engine
-
-Enterprise Applications
-
-Service Principals
-
-OAuth
-
-App Roles
-
----
-
-## v0.6.0
-
-Endpoint Engine
-
-Microsoft Intune
-
-Autopilot
-
-Compliance
-
----
-
-## v0.7.0
-
-Security Engine
-
-Microsoft Sentinel
-
-Microsoft Defender XDR
-
-Threat Hunting
-
-Incident Automation
-
----
-
-## v0.8.0
-
-Compliance Engine
-
-Microsoft Purview
-
-Audit
-
-DLP
-
-eDiscovery
-
----
-
-## v0.9.0
-
-Automation Engine
-
-Microsoft Graph
-
-GitHub Actions
-
-PowerShell Modules
-
-Automation Framework
-
----
-
-## v1.0.0
-
-BlackKnight One
-
-Enterprise Trust Platform
+| Version | Focus                      |
+| ------- | -------------------------- |
+| v0.1    | Foundation Engine ✅        |
+| v0.2    | Identity Architecture ✅    |
+| v0.3    | Identity Governance ✅      |
+| v0.4    | Identity Discovery & Trust |
+| v0.5    | Enterprise Applications    |
+| v0.6    | Endpoint Management        |
+| v0.7    | Security Operations        |
+| v0.8    | Compliance                 |
+| v0.9    | Automation Platform        |
+| v1.0    | Enterprise Trust Platform  |
 
 ---
 
 # Community
 
-BlackKnight One is built to help engineers learn, automate, and continuously improve enterprise identity environments.
+Blackknight One is built to help engineers learn, automate, and continuously improve enterprise identity environments.
 
-Whether you're deploying your first Microsoft Entra tenant or designing automation at enterprise scale, you're welcome here.
+Whether you're deploying your first Microsoft Entra tenant, governing access for thousands of users, or building automation at enterprise scale, you're welcome here.
 
 Build.
 
 Coach.
 
 Mentor.
+
+---
+
+## License
+
+MIT License
+
+---
+
+## Author
+
+Created and maintained by Todd Crow.
+
+Inspired by the philosophy of building confidence through continuous verification.
