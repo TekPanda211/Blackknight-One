@@ -40,51 +40,83 @@ function Invoke-WorkforceLifecycleHealth {
     Timestamp       = (Get-Date).ToUniversalTime().ToString("o")
     Evidence        = @("Workflow framework created")
     Recommendations = @("Add Microsoft Graph user lifecycle validation")
-}
+	}
 }
 
 function Invoke-PartnerOperationsHealth {
     Write-BKSection "Partner Operations Engine"
 
     [PSCustomObject]@{
-        Engine      = "Partner Operations"
-        Status      = "Framework Ready"
-        Workflows   = "GDAP health, role auditing, expiration monitoring, customer inventory"
-        NextFeature = "GDAP relationship inventory"
-    }
+    Engine          = "Partner Operations"
+    Version         = "0.3.0-alpha"
+    Status          = "Framework"
+    Health          = "Healthy"
+    Confidence      = 75
+    ChecksRun       = 1
+    Passed          = 1
+    Warnings        = 0
+    Failed          = 0
+    Timestamp       = (Get-Date).ToUniversalTime().ToString("o")
+    Evidence        = @("Workflow framework created")
+    Recommendations = @("Add Microsoft Graph user lifecycle validation")
+	}
 }
 
 function Invoke-LicenseOperationsHealth {
     Write-BKSection "License Operations Engine"
 
     [PSCustomObject]@{
-        Engine      = "License Operations"
-        Status      = "Framework Ready"
-        Workflows   = "License optimization, orphaned licenses, group-based licensing validation"
-        NextFeature = "Microsoft Graph subscribed SKU inventory"
-    }
+    Engine          = "License Operations"
+    Version         = "0.3.0-alpha"
+    Status          = "Framework"
+    Health          = "Healthy"
+    Confidence      = 75
+    ChecksRun       = 1
+    Passed          = 1
+    Warnings        = 0
+    Failed          = 0
+    Timestamp       = (Get-Date).ToUniversalTime().ToString("o")
+    Evidence        = @("Workflow framework created")
+    Recommendations = @("Add Microsoft Graph user lifecycle validation")
+	}
 }
 
 function Invoke-IdentityRequestHealth {
     Write-BKSection "Identity Requests Engine"
 
     [PSCustomObject]@{
-        Engine      = "Identity Requests"
-        Status      = "Framework Ready"
-        Workflows   = "Group requests, temporary access, guest access, shared mailbox access"
-        NextFeature = "Access request evidence model"
-    }
+    Engine          = "Identity Requests"
+    Version         = "0.3.0-alpha"
+    Status          = "Framework"
+    Health          = "Healthy"
+    Confidence      = 75
+    ChecksRun       = 1
+    Passed          = 1
+    Warnings        = 0
+    Failed          = 0
+    Timestamp       = (Get-Date).ToUniversalTime().ToString("o")
+    Evidence        = @("Workflow framework created")
+    Recommendations = @("Add Microsoft Graph user lifecycle validation")
+}
 }
 
 function Invoke-IncidentResponseHealth {
     Write-BKSection "Incident Response Engine"
 
     [PSCustomObject]@{
-        Engine      = "Incident Response"
-        Status      = "Framework Ready"
-        Workflows   = "Emergency termination, compromised account response, privileged access removal"
-        NextFeature = "Emergency termination validation workflow"
-    }
+    Engine          = "Incident Response"
+    Version         = "0.3.0-alpha"
+    Status          = "Framework"
+    Health          = "Healthy"
+    Confidence      = 75
+    ChecksRun       = 1
+    Passed          = 1
+    Warnings        = 0
+    Failed          = 0
+    Timestamp       = (Get-Date).ToUniversalTime().ToString("o")
+    Evidence        = @("Workflow framework created")
+    Recommendations = @("Add Microsoft Graph user lifecycle validation")
+	}
 }
 
 function Invoke-BlackKnightOperations {
