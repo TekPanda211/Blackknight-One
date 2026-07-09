@@ -3,7 +3,7 @@
   "Version": "0.4.0-alpha",
   "OverallConfidence": 75.0,
   "EnginesRun": 11,
-  "GeneratedAt": "2026-07-08T23:49:47.3971839Z",
+  "GeneratedAt": "2026-07-09T00:24:32.2210675Z",
   "Results": [
     {
       "Engine": "Access Packages",
@@ -15,7 +15,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.2659702Z",
+      "Timestamp": "2026-07-09T00:24:31.1150219Z",
       "Evidence": [
         "Access Package framework documented",
         "Access Package standard created",
@@ -36,7 +36,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.2677462Z",
+      "Timestamp": "2026-07-09T00:24:31.1168568Z",
       "Evidence": [
         "Governance catalog defined",
         "Governed access workflow documented",
@@ -57,7 +57,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.2691322Z",
+      "Timestamp": "2026-07-09T00:24:31.1184472Z",
       "Evidence": [
         "Administrative Units identified as governance capability",
         "Scoped administration model documented"
@@ -77,7 +77,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.2704317Z",
+      "Timestamp": "2026-07-09T00:24:31.1199091Z",
       "Evidence": [
         "Dynamic Groups identified for attribute-based access",
         "Department-based membership model planned"
@@ -97,7 +97,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.2717977Z",
+      "Timestamp": "2026-07-09T00:24:31.1213805Z",
       "Evidence": [
         "Access Reviews included in governance model",
         "Privileged, guest, contractor, and application access review use cases documented"
@@ -117,7 +117,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.2731255Z",
+      "Timestamp": "2026-07-09T00:24:31.12518Z",
       "Evidence": [
         "Delegated access governance model documented",
         "Group-based delegated access review pattern defined"
@@ -129,6 +129,51 @@
       ]
     },
     {
+      "Tenant": {
+        "TenantName": "BlackKnight Networking",
+        "TenantId": "5e0e3977-d571-4ae6-9a65-1f967968ee9a",
+        "Account": "GA-tcrow@blackknightnetworking.com",
+        "VerifiedDomains": 2,
+        "InitialDomain": "BlackKnightNetworking.onmicrosoft.com",
+        "TotalUsers": 10,
+        "EnabledUsers": 10,
+        "DisabledUsers": 0,
+        "GuestUsers": 1,
+        "TotalGroups": 35,
+        "SecurityGroups": 34,
+        "RoleAssignableGroups": 0,
+        "SubscribedSkus": 4,
+        "Timestamp": "2026-07-09T00:24:32.0573381Z"
+      },
+      "Result": {
+        "Engine": "Identity Discovery",
+        "Version": "0.4.0-alpha",
+        "Status": "Integrated",
+        "Health": "Healthy",
+        "Confidence": 100,
+        "ChecksRun": 10,
+        "Passed": 10,
+        "Warnings": 0,
+        "Failed": 0,
+        "Timestamp": "2026-07-09T00:24:32.0576066Z",
+        "Evidence": [
+          "Tenant discovered",
+          "Verified domain exists",
+          "Users discovered",
+          "Groups discovered",
+          "No disabled users detected",
+          "Guest user ratio is within threshold",
+          "License inventory available",
+          "Security groups discovered",
+          "Role-assignable groups reviewed"
+        ],
+        "Recommendations": [
+          "Evaluate Privileged Identity Management readiness.",
+          "Validate privileged groups have owners and access reviews."
+        ]
+      }
+    },
+    {
       "Engine": "Workforce Lifecycle",
       "Version": "0.4.0-alpha",
       "Status": "Framework",
@@ -138,7 +183,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.3615848Z",
+      "Timestamp": "2026-07-09T00:24:32.1664334Z",
       "Evidence": [
         "Workforce lifecycle framework created"
       ],
@@ -156,7 +201,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.3638333Z",
+      "Timestamp": "2026-07-09T00:24:32.1693834Z",
       "Evidence": [
         "Partner operations framework created"
       ],
@@ -174,7 +219,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.3657116Z",
+      "Timestamp": "2026-07-09T00:24:32.1726169Z",
       "Evidence": [
         "License operations framework created"
       ],
@@ -192,7 +237,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.3676536Z",
+      "Timestamp": "2026-07-09T00:24:32.176026Z",
       "Evidence": [
         "Identity request framework created"
       ],
@@ -210,7 +255,7 @@
       "Passed": 1,
       "Warnings": 0,
       "Failed": 0,
-      "Timestamp": "2026-07-08T23:49:47.369714Z",
+      "Timestamp": "2026-07-09T00:24:32.1789325Z",
       "Evidence": [
         "Incident response framework created"
       ],

@@ -1,0 +1,45 @@
+{
+  "Tenant": {
+    "TenantName": "BlackKnight Networking",
+    "TenantId": "5e0e3977-d571-4ae6-9a65-1f967968ee9a",
+    "Account": "GA-tcrow@blackknightnetworking.com",
+    "VerifiedDomains": 2,
+    "InitialDomain": "BlackKnightNetworking.onmicrosoft.com",
+    "TotalUsers": 10,
+    "EnabledUsers": 10,
+    "DisabledUsers": 0,
+    "GuestUsers": 1,
+    "TotalGroups": 35,
+    "SecurityGroups": 34,
+    "RoleAssignableGroups": 0,
+    "SubscribedSkus": 4,
+    "Timestamp": "2026-07-09T00:24:32.0573381Z"
+  },
+  "Result": {
+    "Engine": "Identity Discovery",
+    "Version": "0.4.0-alpha",
+    "Status": "Integrated",
+    "Health": "Healthy",
+    "Confidence": 100,
+    "ChecksRun": 10,
+    "Passed": 10,
+    "Warnings": 0,
+    "Failed": 0,
+    "Timestamp": "2026-07-09T00:24:32.0576066Z",
+    "Evidence": [
+      "Tenant discovered",
+      "Verified domain exists",
+      "Users discovered",
+      "Groups discovered",
+      "No disabled users detected",
+      "Guest user ratio is within threshold",
+      "License inventory available",
+      "Security groups discovered",
+      "Role-assignable groups reviewed"
+    ],
+    "Recommendations": [
+      "Evaluate Privileged Identity Management readiness.",
+      "Validate privileged groups have owners and access reviews."
+    ]
+  }
+}
