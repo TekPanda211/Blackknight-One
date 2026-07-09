@@ -2,7 +2,23 @@
   "Name": "Operations",
   "DisplayName": "Operations Engine",
   "Version": "0.4.0-alpha",
+  "Status": "Framework",
   "Enabled": true,
   "EntryPoint": "Invoke-BlackKnightOperations.ps1",
+  "Category": "Operations",
+  "ConfidenceModel": true,
+  "ProducesReport": true,
+  "ReportName": "operations-health.json",
+  "Dependencies": [
+    "New-BKResult",
+    "Export-BKJsonReport"
+  ],
+  "Capabilities": [
+    "Workforce Lifecycle",
+    "Partner Operations",
+    "License Operations",
+    "Identity Requests",
+    "Incident Response"
+  ],
   "Description": "Workforce lifecycle, partner operations, license operations, identity requests, and incident response workflows."
 }

@@ -121,6 +121,14 @@
       "RequiresGraph": false,
       "RequiredScopes": [],
       "Description": "Inventories installed platform components."
-    }
+    },
+    {
+      "Name": "Get-BKEngineManifest",
+      "Category": "Registry",
+      "Status": "Integrated",
+      "RequiresGraph": false,
+      "RequiredScopes": [],
+      "Description": "Reads and normalizes Blackknight engine manifest metadata."
+ }
   ]
 }

@@ -1,8 +1,26 @@
 {
   "Name": "Identity",
-  "DisplayName": "Identity Engine",
-  "Version": "0.5.0-alpha",
+  "DisplayName": "Identity Discovery",
+  "Version": "0.4.0-alpha",
+  "Status": "Integrated",
   "Enabled": true,
   "EntryPoint": "Invoke-BKIdentityDiscovery.ps1",
+  "Category": "Discovery",
+  "ConfidenceModel": true,
+  "ProducesReport": true,
+  "ReportName": "identity-discovery.json",
+  "Dependencies": [
+    "Connect-BKGraph",
+    "Get-BKTenant"
+  ],
+  "Capabilities": [
+    "Tenant Discovery",
+    "Organization Discovery",
+    "Domain Discovery",
+    "User Discovery",
+    "Group Discovery",
+    "Licensing Discovery",
+    "Identity Confidence Scoring"
+  ],
   "Description": "Microsoft Graph tenant discovery and identity confidence scoring."
 }

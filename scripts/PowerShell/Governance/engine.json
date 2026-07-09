@@ -2,7 +2,24 @@
   "Name": "Governance",
   "DisplayName": "Access & Governance Engine",
   "Version": "0.4.0-alpha",
+  "Status": "Framework",
   "Enabled": true,
   "EntryPoint": "Invoke-BlackKnightGovernance.ps1",
+  "Category": "Governance",
+  "ConfidenceModel": true,
+  "ProducesReport": true,
+  "ReportName": "governance-health.json",
+  "Dependencies": [
+    "New-BKResult",
+    "Export-BKJsonReport"
+  ],
+  "Capabilities": [
+    "Access Package Framework",
+    "Entitlement Management Framework",
+    "Administrative Units Framework",
+    "Dynamic Groups Framework",
+    "Access Reviews Framework",
+    "GDAP-Inspired Governance"
+  ],
   "Description": "Identity Governance, Access Packages, Entitlement Management, Administrative Units, Dynamic Groups, Access Reviews, and delegated access governance."
 }
