@@ -36,6 +36,7 @@ function Test-BKPlatform {
 
     $requiredFunctions = @(
         "Connect-BKGraph",
+        "Get-BKCapabilities",
         "Get-BKOrganization",
         "Get-BKDomains",
         "Get-BKUsers",

@@ -129,6 +129,14 @@
       "RequiresGraph": false,
       "RequiredScopes": [],
       "Description": "Reads and normalizes Blackknight engine manifest metadata."
+    },
+    {
+      "Name": "Get-BKCapabilities",
+      "Category": "Registry",
+      "Status": "Integrated",
+      "RequiresGraph": false,
+      "RequiredScopes": [],
+      "Description": "Returns platform capabilities advertised by registered engine manifests."
  }
   ]
 }
