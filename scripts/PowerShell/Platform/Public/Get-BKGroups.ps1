@@ -1,14 +1,21 @@
 function Get-BKGroups {
     [CmdletBinding()]
-    param()
+    param(
+        [switch]$SkipGraphConnect
+    )
 
-    Write-BKLog -Message "Collecting group information..." -Level Info
+    Write-BKLog -Message "Collecting groups information..." -Level Info
 
     try {
-        Connect-BKGraph -Scopes @(
-            "Group.Read.All",
-            "Directory.Read.All"
-        ) | Out-Null
+
+        if (-not $SkipGraphConnect) {
+            Connect-BKGraph -Scopes @(
+                "Organization.Read.All",
+                "Directory.Read.All"
+            ) | Out-Null
+        }
+
+        $organization = Get-MgOrganization -ErrorAction Stop | Select-Object -First 1
 
         $groups = Get-MgGroup -All -Property `
             Id,

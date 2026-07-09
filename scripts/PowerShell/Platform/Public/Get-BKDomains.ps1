@@ -1,14 +1,21 @@
 function Get-BKDomains {
     [CmdletBinding()]
-    param()
+    param(
+        [switch]$SkipGraphConnect
+    )
 
     Write-BKLog -Message "Collecting domain information..." -Level Info
 
     try {
-        Connect-BKGraph -Scopes @(
-            "Domain.Read.All",
-            "Directory.Read.All"
-        ) | Out-Null
+
+        if (-not $SkipGraphConnect) {
+            Connect-BKGraph -Scopes @(
+                "Organization.Read.All",
+                "Directory.Read.All"
+            ) | Out-Null
+        }
+
+        $organization = Get-MgOrganization -ErrorAction Stop | Select-Object -First 1
 
         $domains = Get-MgDomain -All -ErrorAction Stop
 
