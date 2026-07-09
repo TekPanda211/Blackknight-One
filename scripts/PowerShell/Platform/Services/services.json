@@ -1,0 +1,32 @@
+{
+  "Platform": "Blackknight One",
+  "Version": "0.4.0-alpha",
+  "Services": {
+    "Authentication": [
+      "Connect-BKGraph"
+    ],
+    "Discovery": [
+      "Get-BKOrganization",
+      "Get-BKDomains",
+      "Get-BKUsers",
+      "Get-BKGroups",
+      "Get-BKLicensing",
+      "Get-BKTenant"
+    ],
+    "Reporting": [
+      "Export-BKJsonReport"
+    ],
+    "Confidence": [
+      "Get-BKConfidenceScore"
+    ],
+    "Results": [
+      "New-BKResult"
+    ],
+    "Logging": [
+      "Write-BKLog"
+    ],
+    "Validation": [
+      "Test-BKPlatform"
+    ]
+  }
+}
