@@ -153,6 +153,14 @@
       "RequiresGraph": true,
       "RequiredScopes": ["Policy.Read.All", "Directory.Read.All"],
       "Description": "Collects Microsoft Entra Conditional Access policy inventory."
+    },
+    {
+      "Name": "Get-BKNamedLocations",
+      "Category": "Trust",
+      "Status": "Integrated",
+      "RequiresGraph": true,
+      "RequiredScopes": ["Policy.Read.All", "Directory.Read.All"],
+      "Description": "Collects Microsoft Entra Conditional Access named locations."
   }
   ]
 }
