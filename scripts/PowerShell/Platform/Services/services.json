@@ -1,13 +1,15 @@
 {
   "Platform": "Blackknight One",
-  "Version": "0.4.0-alpha",
+  "Version": "0.5.0-alpha",
   "Services": [
     {
       "Name": "Connect-BKGraph",
       "Category": "Authentication",
       "Status": "Integrated",
       "RequiresGraph": true,
-      "RequiredScopes": ["Directory.Read.All"],
+      "RequiredScopes": [
+        "Directory.Read.All"
+      ],
       "Description": "Connects Blackknight One to Microsoft Graph."
     },
     {
@@ -15,7 +17,10 @@
       "Category": "Discovery",
       "Status": "Integrated",
       "RequiresGraph": true,
-      "RequiredScopes": ["Organization.Read.All", "Directory.Read.All"],
+      "RequiredScopes": [
+        "Organization.Read.All",
+        "Directory.Read.All"
+      ],
       "Description": "Collects Microsoft Entra organization information."
     },
     {
@@ -23,7 +28,10 @@
       "Category": "Discovery",
       "Status": "Integrated",
       "RequiresGraph": true,
-      "RequiredScopes": ["Domain.Read.All", "Directory.Read.All"],
+      "RequiredScopes": [
+        "Domain.Read.All",
+        "Directory.Read.All"
+      ],
       "Description": "Collects Microsoft Entra domain information."
     },
     {
@@ -31,7 +39,10 @@
       "Category": "Discovery",
       "Status": "Integrated",
       "RequiresGraph": true,
-      "RequiredScopes": ["User.Read.All", "Directory.Read.All"],
+      "RequiredScopes": [
+        "User.Read.All",
+        "Directory.Read.All"
+      ],
       "Description": "Collects Microsoft Entra user inventory."
     },
     {
@@ -39,7 +50,10 @@
       "Category": "Discovery",
       "Status": "Integrated",
       "RequiresGraph": true,
-      "RequiredScopes": ["Group.Read.All", "Directory.Read.All"],
+      "RequiredScopes": [
+        "Group.Read.All",
+        "Directory.Read.All"
+      ],
       "Description": "Collects Microsoft Entra group inventory."
     },
     {
@@ -47,7 +61,10 @@
       "Category": "Discovery",
       "Status": "Integrated",
       "RequiresGraph": true,
-      "RequiredScopes": ["Organization.Read.All", "Directory.Read.All"],
+      "RequiredScopes": [
+        "Organization.Read.All",
+        "Directory.Read.All"
+      ],
       "Description": "Collects Microsoft 365 subscribed SKU information."
     },
     {
@@ -55,8 +72,59 @@
       "Category": "Discovery",
       "Status": "Integrated",
       "RequiresGraph": true,
-      "RequiredScopes": ["Organization.Read.All", "Directory.Read.All", "Domain.Read.All", "User.Read.All", "Group.Read.All"],
+      "RequiredScopes": [
+        "Organization.Read.All",
+        "Directory.Read.All",
+        "Domain.Read.All",
+        "User.Read.All",
+        "Group.Read.All"
+      ],
       "Description": "Builds a tenant summary from reusable discovery services."
+    },
+    {
+      "Name": "Get-BKConditionalAccessPolicies",
+      "Category": "Trust",
+      "Status": "Integrated",
+      "RequiresGraph": true,
+      "RequiredScopes": [
+        "Policy.Read.All",
+        "Directory.Read.All"
+      ],
+      "Description": "Collects Microsoft Entra Conditional Access policy inventory."
+    },
+    {
+      "Name": "Get-BKNamedLocations",
+      "Category": "Trust",
+      "Status": "Integrated",
+      "RequiresGraph": true,
+      "RequiredScopes": [
+        "Policy.Read.All",
+        "Directory.Read.All"
+      ],
+      "Description": "Collects Microsoft Entra Conditional Access named locations."
+    },
+    {
+      "Name": "Get-BKAuthenticationMethodsSummary",
+      "Category": "Trust",
+      "Status": "Integrated",
+      "RequiresGraph": true,
+      "RequiredScopes": [
+        "AuditLog.Read.All",
+        "Directory.Read.All"
+      ],
+      "Description": "Collects Microsoft Entra authentication method registration, MFA, SSPR, and passwordless readiness summary."
+    },
+    {
+      "Name": "Get-BKIdentityGraph",
+      "Category": "Correlation",
+      "Status": "Integrated",
+      "RequiresGraph": true,
+      "RequiredScopes": [
+        "User.Read.All",
+        "Directory.Read.All",
+        "AuditLog.Read.All"
+      ],
+      "Description": "Correlates Microsoft Entra user inventory with authentication registration and readiness data."
     },
     {
       "Name": "New-BKResult",
@@ -67,6 +135,14 @@
       "Description": "Creates standardized Blackknight result objects."
     },
     {
+      "Name": "Get-BKConfidenceScore",
+      "Category": "Confidence",
+      "Status": "Integrated",
+      "RequiresGraph": false,
+      "RequiredScopes": [],
+      "Description": "Calculates confidence scores from engine results."
+    },
+    {
       "Name": "Export-BKJsonReport",
       "Category": "Reporting",
       "Status": "Integrated",
@@ -75,12 +151,12 @@
       "Description": "Exports Blackknight result data to JSON."
     },
     {
-      "Name": "Get-BKConfidenceScore",
-      "Category": "Confidence",
+      "Name": "Get-BKDashboardData",
+      "Category": "Reporting",
       "Status": "Integrated",
       "RequiresGraph": false,
       "RequiredScopes": [],
-      "Description": "Calculates confidence scores from engine results."
+      "Description": "Builds normalized dashboard data from platform registries and current engine reports."
     },
     {
       "Name": "Write-BKLog",
@@ -147,44 +223,23 @@
       "Description": "Returns the complete Blackknight platform object."
     },
     {
-      "Name": "Get-BKConditionalAccessPolicies",
-      "Category": "Trust",
-      "Status": "Integrated",
-      "RequiresGraph": true,
-      "RequiredScopes": ["Policy.Read.All", "Directory.Read.All"],
-      "Description": "Collects Microsoft Entra Conditional Access policy inventory."
-    },
-    {
-      "Name": "Get-BKNamedLocations",
-      "Category": "Trust",
-      "Status": "Integrated",
-      "RequiresGraph": true,
-      "RequiredScopes": ["Policy.Read.All", "Directory.Read.All"],
-      "Description": "Collects Microsoft Entra Conditional Access named locations."
-    },
-    {
-      "Name": "Get-BKAuthenticationMethodsSummary",
-      "Category": "Trust",
-      "Status": "Integrated",
-      "RequiresGraph": true,
-      "RequiredScopes": ["AuditLog.Read.All", "Directory.Read.All"],
-      "Description": "Collects Microsoft Entra authentication method registration, MFA, SSPR, and passwordless readiness summary."
-    },
-    {
-      "Name": "Get-BKDashboardData",
-      "Category": "Reporting",
-      "Status": "Integrated",
-      "RequiresGraph": false,
-      "RequiredScopes": [],
-      "Description": "Builds normalized dashboard data from platform registries and current engine reports."
-    },
-    {
       "Name": "Show-BKDashboard",
       "Category": "Presentation",
       "Status": "Integrated",
       "RequiresGraph": false,
       "RequiredScopes": [],
       "Description": "Displays the Blackknight One operational dashboard."
-}
+    },
+    {
+      "Name": "Show-BKAuthenticationMethodsSummary",
+      "Category": "Presentation",
+      "Status": "Integrated",
+      "RequiresGraph": true,
+      "RequiredScopes": [
+        "AuditLog.Read.All",
+        "Directory.Read.All"
+      ],
+      "Description": "Displays a readable Microsoft Entra authentication methods, MFA, SSPR, and passwordless readiness summary."
+    }
   ]
 }

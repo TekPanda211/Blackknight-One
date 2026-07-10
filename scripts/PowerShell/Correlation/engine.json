@@ -1,0 +1,28 @@
+{
+  "Name": "Correlation",
+  "DisplayName": "Correlation Engine",
+  "Version": "0.5.0-alpha",
+  "Status": "Integrated",
+  "Enabled": true,
+  "EntryPoint": "Invoke-BKCorrelation.ps1",
+  "Category": "Correlation",
+  "ConfidenceModel": true,
+  "ProducesReport": true,
+  "ReportName": "identity-graph.json",
+  "Dependencies": [
+    "Connect-BKGraph",
+    "Get-BKUsers",
+    "Get-BKIdentityGraph",
+    "New-BKResult",
+    "Export-BKJsonReport"
+  ],
+  "Capabilities": [
+    "Identity Correlation",
+    "Authentication Correlation",
+    "Privileged Identity Visibility",
+    "MFA Gap Detection",
+    "Passwordless Readiness Correlation",
+    "Identity Graph Reporting"
+  ],
+  "Description": "Correlates identity and authentication evidence into a normalized identity graph."
+}
