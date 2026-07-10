@@ -26,7 +26,7 @@ function Get-BKDashboardData {
         }
 
         try {
-            Get-Content -Path $Path -Raw -ErrorAction Stop |
+            return Get-Content -Path $Path -Raw -ErrorAction Stop |
                 ConvertFrom-Json -ErrorAction Stop
         }
         catch {
@@ -40,6 +40,7 @@ function Get-BKDashboardData {
 
     function Get-BKReportResults {
         param(
+            [AllowNull()]
             [object]$Report
         )
 
@@ -60,6 +61,30 @@ function Get-BKDashboardData {
         }
 
         return @($Report)
+    }
+
+    function Get-BKAverageConfidence {
+        param(
+            [AllowEmptyCollection()]
+            [object[]]$Results
+        )
+
+        $validResults = @(
+            $Results | Where-Object {
+                $null -ne $_ -and
+                $_.PSObject.Properties.Name -contains "Confidence" -and
+                $null -ne $_.Confidence
+            }
+        )
+
+        if ($validResults.Count -eq 0) {
+            return $null
+        }
+
+        return [math]::Round(
+            ($validResults.Confidence | Measure-Object -Average).Average,
+            2
+        )
     }
 
     try {
@@ -84,7 +109,7 @@ function Get-BKDashboardData {
         $operationsResults = @(Get-BKReportResults -Report $operationsReport)
         $validationResults = @(Get-BKReportResults -Report $validationReport)
 
-        $allResults = @(
+        $allAssessmentResults = @(
             $identityResults
             $trustResults
             $governanceResults
@@ -94,88 +119,45 @@ function Get-BKDashboardData {
             $_.PSObject.Properties.Name -contains "Confidence"
         }
 
-        $overallConfidence = if ($allResults.Count -gt 0) {
-            [math]::Round(
-                ($allResults.Confidence | Measure-Object -Average).Average,
-                2
-            )
-        }
-        else {
-            0
-        }
-
-        $identityConfidence = if ($identityResults.Count -gt 0) {
-            [math]::Round(
-                ($identityResults.Confidence | Measure-Object -Average).Average,
-                2
-            )
-        }
-        else {
-            $null
-        }
-
-        $trustConfidence = if ($trustResults.Count -gt 0) {
-            [math]::Round(
-                ($trustResults.Confidence | Measure-Object -Average).Average,
-                2
-            )
-        }
-        else {
-            $null
-        }
-
-        $governanceConfidence = if ($governanceResults.Count -gt 0) {
-            [math]::Round(
-                ($governanceResults.Confidence | Measure-Object -Average).Average,
-                2
-            )
-        }
-        else {
-            $null
-        }
-
-        $operationsConfidence = if ($operationsResults.Count -gt 0) {
-            [math]::Round(
-                ($operationsResults.Confidence | Measure-Object -Average).Average,
-                2
-            )
-        }
-        else {
-            $null
-        }
-
-        $validationConfidence = if ($validationResults.Count -gt 0) {
-            [math]::Round(
-                ($validationResults.Confidence | Measure-Object -Average).Average,
-                2
-            )
-        }
-        else {
-            $null
-        }
+        $identityConfidence = Get-BKAverageConfidence -Results $identityResults
+        $trustConfidence = Get-BKAverageConfidence -Results $trustResults
+        $governanceConfidence = Get-BKAverageConfidence -Results $governanceResults
+        $operationsConfidence = Get-BKAverageConfidence -Results $operationsResults
+        $validationConfidence = Get-BKAverageConfidence -Results $validationResults
+        $overallConfidence = Get-BKAverageConfidence -Results $allAssessmentResults
 
         $recommendations = @(
-            $allResults |
+            $allAssessmentResults |
                 ForEach-Object { @($_.Recommendations) } |
-                Where-Object { -not [string]::IsNullOrWhiteSpace($_) } |
+                Where-Object {
+                    -not [string]::IsNullOrWhiteSpace([string]$_)
+                } |
                 Select-Object -Unique
         )
 
-        $failedChecks = @(
-            $allResults |
+        $warningChecks = (
+            $allAssessmentResults |
+                Where-Object {
+                    $_.PSObject.Properties.Name -contains "Warnings"
+                } |
+                Measure-Object -Property Warnings -Sum
+        ).Sum
+
+        $failedChecks = (
+            $allAssessmentResults |
                 Where-Object {
                     $_.PSObject.Properties.Name -contains "Failed"
                 } |
                 Measure-Object -Property Failed -Sum
         ).Sum
 
-        $warningChecks = @(
-            $allResults |
-                Where-Object {
-                    $_.PSObject.Properties.Name -contains "Warnings"
-                } |
-                Measure-Object -Property Warnings -Sum
-        ).Sum
+        if ($null -eq $warningChecks) {
+            $warningChecks = 0
+        }
+
+        if ($null -eq $failedChecks) {
+            $failedChecks = 0
+        }
 
         $tenantName = $null
         $tenantId = $null
@@ -184,58 +166,113 @@ function Get-BKDashboardData {
         $totalGroups = $null
         $subscribedSkus = $null
 
-        if ($identityReport) {
-            if ($identityReport.PSObject.Properties.Name -contains "Tenant") {
-                $tenantName = $identityReport.Tenant.TenantName
-                $tenantId = $identityReport.Tenant.TenantId
-                $totalUsers = $identityReport.Tenant.TotalUsers
-                $guestUsers = $identityReport.Tenant.GuestUsers
-                $totalGroups = $identityReport.Tenant.TotalGroups
-                $subscribedSkus = $identityReport.Tenant.SubscribedSkus
+        if (
+            $identityReport -and
+            $identityReport.PSObject.Properties.Name -contains "Tenant"
+        ) {
+            $tenantName = $identityReport.Tenant.TenantName
+            $tenantId = $identityReport.Tenant.TenantId
+            $totalUsers = $identityReport.Tenant.TotalUsers
+            $guestUsers = $identityReport.Tenant.GuestUsers
+            $totalGroups = $identityReport.Tenant.TotalGroups
+            $subscribedSkus = $identityReport.Tenant.SubscribedSkus
+        }
+
+        $trustSnapshot = [PSCustomObject]@{
+            TotalPolicies = $null
+            EnabledPolicies = $null
+            ReportOnlyPolicies = $null
+            DisabledPolicies = $null
+            NamedLocations = $null
+            MfaRegisteredPercent = $null
+            AdminsWithoutMfa = $null
+            PasswordlessCapablePercent = $null
+            SsprRegisteredPercent = $null
+            SystemPreferredEnabledPercent = $null
+        }
+
+        if ($trustReport) {
+            if (
+                $trustReport.PSObject.Properties.Name -contains "ConditionalAccess" -and
+                $null -ne $trustReport.ConditionalAccess
+            ) {
+                $trustSnapshot.TotalPolicies = $trustReport.ConditionalAccess.Total
+                $trustSnapshot.EnabledPolicies = $trustReport.ConditionalAccess.Enabled
+                $trustSnapshot.ReportOnlyPolicies = $trustReport.ConditionalAccess.ReportOnly
+                $trustSnapshot.DisabledPolicies = $trustReport.ConditionalAccess.Disabled
+            }
+
+            if (
+                $trustReport.PSObject.Properties.Name -contains "NamedLocations" -and
+                $null -ne $trustReport.NamedLocations
+            ) {
+                $trustSnapshot.NamedLocations = @($trustReport.NamedLocations).Count
+            }
+
+            if (
+                $trustReport.PSObject.Properties.Name -contains "Authentication" -and
+                $null -ne $trustReport.Authentication
+            ) {
+                $trustSnapshot.MfaRegisteredPercent =
+                    $trustReport.Authentication.MfaRegisteredPercent
+
+                $trustSnapshot.AdminsWithoutMfa =
+                    $trustReport.Authentication.AdminsWithoutMfa
+
+                $trustSnapshot.PasswordlessCapablePercent =
+                    $trustReport.Authentication.PasswordlessCapablePercent
+
+                $trustSnapshot.SsprRegisteredPercent =
+                    $trustReport.Authentication.SsprRegisteredPercent
+
+                $trustSnapshot.SystemPreferredEnabledPercent =
+                    $trustReport.Authentication.SystemPreferredEnabledPercent
             }
         }
 
         [PSCustomObject]@{
             Platform = [PSCustomObject]@{
-                Name            = $platform.Name
-                Version         = $platform.Version
-                Mission         = $platform.Mission
-                NorthStar       = $platform.NorthStar
-                EngineCount     = $platform.EngineCount
-                ServiceCount    = $platform.ServiceCount
+                Name = $platform.Name
+                Version = $platform.Version
+                Mission = $platform.Mission
+                NorthStar = $platform.NorthStar
+                EngineCount = $platform.EngineCount
+                ServiceCount = $platform.ServiceCount
                 CapabilityCount = $platform.CapabilityCount
             }
 
             Tenant = [PSCustomObject]@{
-                Name           = $tenantName
-                TenantId       = $tenantId
-                TotalUsers     = $totalUsers
-                GuestUsers     = $guestUsers
-                TotalGroups    = $totalGroups
+                Name = $tenantName
+                TenantId = $tenantId
+                TotalUsers = $totalUsers
+                GuestUsers = $guestUsers
+                TotalGroups = $totalGroups
                 SubscribedSkus = $subscribedSkus
             }
 
             Confidence = [PSCustomObject]@{
-                Identity   = $identityConfidence
-                Trust      = $trustConfidence
+                Identity = $identityConfidence
+                Trust = $trustConfidence
                 Governance = $governanceConfidence
                 Operations = $operationsConfidence
                 Validation = $validationConfidence
-                Overall    = $overallConfidence
+                Overall = $overallConfidence
             }
 
+            TrustSnapshot = $trustSnapshot
+
             Findings = [PSCustomObject]@{
-                Warnings             = if ($null -eq $warningChecks) { 0 } else { $warningChecks }
-                Failures             = if ($null -eq $failedChecks) { 0 } else { $failedChecks }
-                RecommendationCount  = $recommendations.Count
-                Recommendations      = $recommendations
+                Warnings = $warningChecks
+                Failures = $failedChecks
+                RecommendationCount = $recommendations.Count
+                Recommendations = $recommendations
             }
 
             Engines = $engines
 
             Reports = [PSCustomObject]@{
-                IdentityAvailable   = Test-Path $identityPath
-                TrustAvailable      = Test-Path $trustPath
+                IdentityAvailable = Test-Path $identityPath
+                TrustAvailable = Test-Path $trustPath
                 GovernanceAvailable = Test-Path $governancePath
                 OperationsAvailable = Test-Path $operationsPath
                 ValidationAvailable = Test-Path $validationPath
