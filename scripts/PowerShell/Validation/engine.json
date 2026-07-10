@@ -1,0 +1,26 @@
+{
+  "Name": "Validation",
+  "DisplayName": "Validation Engine",
+  "Version": "0.5.0-alpha",
+  "Status": "Framework",
+  "Enabled": true,
+  "EntryPoint": "Invoke-BKValidation.ps1",
+  "Category": "Validation",
+  "ConfidenceModel": true,
+  "ProducesReport": true,
+  "ReportName": "validation-report.json",
+  "Dependencies": [
+    "New-BKResult",
+    "Export-BKJsonReport",
+    "Get-BKEngineManifest",
+    "Get-BKServiceManifest"
+  ],
+  "Capabilities": [
+    "Evidence Validation",
+    "Engine Result Validation",
+    "Platform Confidence Aggregation",
+    "Recommendation Aggregation",
+    "Validation Reporting"
+  ],
+  "Description": "Validates evidence and results produced by Blackknight One engines and generates evidence-based platform confidence."
+}

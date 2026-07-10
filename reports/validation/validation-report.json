@@ -1,0 +1,513 @@
+{
+  "Platform": "Blackknight One",
+  "Version": "0.5.0-alpha",
+  "GeneratedAt": "2026-07-10T14:27:09.0216426Z",
+  "ValidationResult": {
+    "Engine": "Validation Engine",
+    "Version": "0.5.0-alpha",
+    "Status": "Integrated",
+    "Health": "Degraded",
+    "Confidence": 98,
+    "ChecksRun": 40,
+    "Passed": 39,
+    "Warnings": 0,
+    "Failed": 1,
+    "Timestamp": "2026-07-10T14:27:09.0151799Z",
+    "Evidence": [
+      "Registered engines evaluated: 4",
+      "Engine result objects evaluated: 12",
+      "Validation checks executed: 40",
+      "Validation checks passed: 39",
+      "Validation warnings: 0",
+      "Validation failures: 1",
+      "Average engine confidence: 75.83%"
+    ],
+    "Recommendations": [
+      "Run Trust Engine with JSON export enabled."
+    ]
+  },
+  "EngineConfidence": 75.83,
+  "ValidationDetails": [
+    {
+      "Engine": "Access & Governance Engine",
+      "Check": "Report Parse",
+      "Status": "PASS",
+      "Details": ".\\reports\\governance\\governance-health.json"
+    },
+    {
+      "Engine": "Access Packages",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Access Packages",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Access Packages",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 3"
+    },
+    {
+      "Engine": "Entitlement Management",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Entitlement Management",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Entitlement Management",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 3"
+    },
+    {
+      "Engine": "Administrative Units",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Administrative Units",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Administrative Units",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 2"
+    },
+    {
+      "Engine": "Dynamic Groups",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Dynamic Groups",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Dynamic Groups",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 2"
+    },
+    {
+      "Engine": "Access Reviews",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Access Reviews",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Access Reviews",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 2"
+    },
+    {
+      "Engine": "GDAP-Inspired Governance",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "GDAP-Inspired Governance",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "GDAP-Inspired Governance",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 2"
+    },
+    {
+      "Engine": "Identity Discovery",
+      "Check": "Report Parse",
+      "Status": "PASS",
+      "Details": ".\\reports\\identity\\identity-discovery.json"
+    },
+    {
+      "Engine": "Identity Discovery",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Identity Discovery",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 85"
+    },
+    {
+      "Engine": "Identity Discovery",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 9"
+    },
+    {
+      "Engine": "Operations Engine",
+      "Check": "Report Parse",
+      "Status": "PASS",
+      "Details": ".\\reports\\operations\\operations-health.json"
+    },
+    {
+      "Engine": "Workforce Lifecycle",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Workforce Lifecycle",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Workforce Lifecycle",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 1"
+    },
+    {
+      "Engine": "Partner Operations",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Partner Operations",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Partner Operations",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 1"
+    },
+    {
+      "Engine": "License Operations",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "License Operations",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "License Operations",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 1"
+    },
+    {
+      "Engine": "Identity Requests",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Identity Requests",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Identity Requests",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 1"
+    },
+    {
+      "Engine": "Incident Response",
+      "Check": "Result Schema",
+      "Status": "PASS",
+      "Details": "Required result properties present."
+    },
+    {
+      "Engine": "Incident Response",
+      "Check": "Confidence Range",
+      "Status": "PASS",
+      "Details": "Confidence: 75"
+    },
+    {
+      "Engine": "Incident Response",
+      "Check": "Evidence Present",
+      "Status": "PASS",
+      "Details": "Evidence items: 1"
+    },
+    {
+      "Engine": "Trust Engine",
+      "Check": "Report Available",
+      "Status": "FAIL",
+      "Details": "Report not found: .\\reports\\trust\\trust-discovery.json"
+    }
+  ],
+  "ResultsEvaluated": [
+    {
+      "Engine": "Access Packages",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:17.5643957Z",
+      "Evidence": [
+        "Access Package framework documented",
+        "Access Package standard created",
+        "Access Package Terraform model defined"
+      ],
+      "Recommendations": [
+        "Add Microsoft Graph discovery for catalogs and access packages",
+        "Validate assignment policies, approvals, expiration, and reviews"
+      ]
+    },
+    {
+      "Engine": "Entitlement Management",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:17.5661404Z",
+      "Evidence": [
+        "Governance catalog defined",
+        "Governed access workflow documented",
+        "Request, approve, assign, validate, review, expire, report pattern established"
+      ],
+      "Recommendations": [
+        "Add catalog discovery",
+        "Add assignment policy validation"
+      ]
+    },
+    {
+      "Engine": "Administrative Units",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:17.5680548Z",
+      "Evidence": [
+        "Administrative Units identified as governance capability",
+        "Scoped administration model documented"
+      ],
+      "Recommendations": [
+        "Add Terraform Administrative Unit model",
+        "Add Microsoft Graph Administrative Unit discovery"
+      ]
+    },
+    {
+      "Engine": "Dynamic Groups",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:17.5699151Z",
+      "Evidence": [
+        "Dynamic Groups identified for attribute-based access",
+        "Department-based membership model planned"
+      ],
+      "Recommendations": [
+        "Add dynamic membership rule examples",
+        "Validate department, employee type, and location attributes"
+      ]
+    },
+    {
+      "Engine": "Access Reviews",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:17.5719322Z",
+      "Evidence": [
+        "Access Reviews included in governance model",
+        "Privileged, guest, contractor, and application access review use cases documented"
+      ],
+      "Recommendations": [
+        "Add Access Review discovery",
+        "Add overdue review detection"
+      ]
+    },
+    {
+      "Engine": "GDAP-Inspired Governance",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:17.5737019Z",
+      "Evidence": [
+        "Delegated access governance model documented",
+        "Group-based delegated access review pattern defined"
+      ],
+      "Recommendations": [
+        "Add delegated role inventory",
+        "Add stale delegated access detection",
+        "Add GDAP expiration reporting"
+      ]
+    },
+    {
+      "Engine": "Identity Discovery",
+      "Version": "0.4.0-alpha",
+      "Status": "Integrated",
+      "Health": "Healthy",
+      "Confidence": 85,
+      "ChecksRun": 10,
+      "Passed": 8,
+      "Warnings": 2,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:05.3064129Z",
+      "Evidence": [
+        "Tenant discovered",
+        "Verified domain exists",
+        "Users discovered",
+        "Groups discovered",
+        "No disabled users detected",
+        "Guest user ratio is within threshold",
+        "License inventory available",
+        "Security groups discovered",
+        "Recommendations generated"
+      ],
+      "Recommendations": [
+        "No role-assignable groups detected. Validate privileged access design and PIM readiness."
+      ]
+    },
+    {
+      "Engine": "Workforce Lifecycle",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:30.4745957Z",
+      "Evidence": [
+        "Workforce lifecycle framework created"
+      ],
+      "Recommendations": [
+        "Add Microsoft Graph user lifecycle validation"
+      ]
+    },
+    {
+      "Engine": "Partner Operations",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:30.4760557Z",
+      "Evidence": [
+        "Partner operations framework created"
+      ],
+      "Recommendations": [
+        "Add GDAP relationship inventory"
+      ]
+    },
+    {
+      "Engine": "License Operations",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:30.4773952Z",
+      "Evidence": [
+        "License operations framework created"
+      ],
+      "Recommendations": [
+        "Add Microsoft Graph subscribed SKU inventory"
+      ]
+    },
+    {
+      "Engine": "Identity Requests",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:30.4789325Z",
+      "Evidence": [
+        "Identity request framework created"
+      ],
+      "Recommendations": [
+        "Add access request evidence model"
+      ]
+    },
+    {
+      "Engine": "Incident Response",
+      "Version": "0.4.0-alpha",
+      "Status": "Framework",
+      "Health": "Healthy",
+      "Confidence": 75,
+      "ChecksRun": 1,
+      "Passed": 1,
+      "Warnings": 0,
+      "Failed": 0,
+      "Timestamp": "2026-07-10T14:26:30.4804271Z",
+      "Evidence": [
+        "Incident response framework created"
+      ],
+      "Recommendations": [
+        "Add emergency termination validation workflow"
+      ]
+    }
+  ]
+}
