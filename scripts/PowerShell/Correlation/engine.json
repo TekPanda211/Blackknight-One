@@ -12,21 +12,24 @@
   "Dependencies": [
     "Connect-BKGraph",
     "Get-BKUsers",
-    "Get-BKIdentityGraph",
     "Get-BKDirectoryRoles",
+    "Get-BKIdentityGraph",
     "New-BKResult",
     "Export-BKJsonReport"
   ],
   "Capabilities": [
     "Identity Correlation",
     "Authentication Correlation",
-    "Privileged Identity Visibility",
+    "Authorization Correlation",
+    "Privileged Identity Detection",
     "MFA Gap Detection",
     "Passwordless Readiness Correlation",
     "Directory Role Correlation",
-    "Privileged Identity Detection",
-    "Deprecated Role Detection"
+    "Deprecated Role Detection",
+    "Service Principal Role Detection",
+    "Authorization Review Findings",
+    "Identity Attention Detection",
     "Identity Graph Reporting"
   ],
-  "Description": "Correlates identity and authentication evidence into a normalized identity graph."
+  "Description": "Correlates Microsoft Entra identity, authentication, and authorization evidence into a normalized identity intelligence graph."
 }

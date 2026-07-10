@@ -4,8 +4,9 @@ function Show-BKDashboard {
     Displays the Blackknight One operational dashboard.
 
     .DESCRIPTION
-    Presents normalized platform, tenant, confidence, Zero Trust,
-    authentication, and recommendation data in a readable console view.
+    Presents platform, tenant, confidence, Zero Trust, authentication,
+    correlation, authorization, and recommendation data in a readable
+    console view.
     #>
 
     [CmdletBinding()]
@@ -34,31 +35,16 @@ function Show-BKDashboard {
         return "$Value$Suffix"
     }
 
-    function Write-BKDashboardRow {
+    function Get-BKMetricColor {
         param(
-            [Parameter(Mandatory)]
-            [string]$Label,
-
             [AllowNull()]
             [object]$Value,
 
-            [string]$Suffix = ""
-        )
+            [double]$GoodThreshold = 85,
 
-        $formattedValue = Format-BKValue `
-            -Value $Value `
-            -Suffix $Suffix
+            [double]$WarningThreshold = 70,
 
-        Write-Host (
-            $Label.PadRight(29) +
-            $formattedValue
-        )
-    }
-
-    function Get-BKConfidenceColor {
-        param(
-            [AllowNull()]
-            [object]$Value
+            [switch]$LowerIsBetter
         )
 
         if ($null -eq $Value) {
@@ -67,15 +53,48 @@ function Show-BKDashboard {
 
         $numericValue = [double]$Value
 
-        if ($numericValue -ge 85) {
+        if ($LowerIsBetter) {
+            if ($numericValue -eq 0) {
+                return "Green"
+            }
+
+            if ($numericValue -le 2) {
+                return "Yellow"
+            }
+
+            return "Red"
+        }
+
+        if ($numericValue -ge $GoodThreshold) {
             return "Green"
         }
 
-        if ($numericValue -ge 70) {
+        if ($numericValue -ge $WarningThreshold) {
             return "Yellow"
         }
 
         return "Red"
+    }
+
+    function Write-BKDashboardRow {
+        param(
+            [Parameter(Mandatory)]
+            [string]$Label,
+
+            [AllowNull()]
+            [object]$Value,
+
+            [string]$Suffix = "",
+
+            [string]$Color = "White"
+        )
+
+        $formattedValue = Format-BKValue `
+            -Value $Value `
+            -Suffix $Suffix
+
+        Write-Host $Label.PadRight(34) -NoNewline
+        Write-Host $formattedValue -ForegroundColor $Color
     }
 
     function Write-BKConfidenceRow {
@@ -87,27 +106,45 @@ function Show-BKDashboard {
             [object]$Value
         )
 
-        $formattedValue = Format-BKValue `
+        $color = Get-BKMetricColor -Value $Value
+
+        Write-BKDashboardRow `
+            -Label $Label `
             -Value $Value `
-            -Suffix "%"
+            -Suffix "%" `
+            -Color $color
+    }
 
-        $color = Get-BKConfidenceColor -Value $Value
+    function Write-BKRiskCountRow {
+        param(
+            [Parameter(Mandatory)]
+            [string]$Label,
 
-        Write-Host $Label.PadRight(29) -NoNewline
-        Write-Host $formattedValue -ForegroundColor $color
+            [AllowNull()]
+            [object]$Value
+        )
+
+        $color = Get-BKMetricColor `
+            -Value $Value `
+            -LowerIsBetter
+
+        Write-BKDashboardRow `
+            -Label $Label `
+            -Value $Value `
+            -Color $color
     }
 
     Clear-Host
 
     Write-Host ""
-    Write-Host "==============================================================" -ForegroundColor Cyan
-    Write-Host "                     BLACKKNIGHT ONE" -ForegroundColor Cyan
-    Write-Host "          Enterprise Identity Engineering Platform" -ForegroundColor Gray
-    Write-Host "==============================================================" -ForegroundColor Cyan
+    Write-Host "====================================================================" -ForegroundColor Cyan
+    Write-Host "                         BLACKKNIGHT ONE" -ForegroundColor Cyan
+    Write-Host "              Enterprise Identity Engineering Platform" -ForegroundColor Gray
+    Write-Host "====================================================================" -ForegroundColor Cyan
 
     Write-Host ""
     Write-Host "Platform" -ForegroundColor Yellow
-    Write-Host "--------------------------------------------------------------"
+    Write-Host "--------------------------------------------------------------------"
 
     Write-BKDashboardRow `
         -Label "Version" `
@@ -127,7 +164,7 @@ function Show-BKDashboard {
 
     Write-Host ""
     Write-Host "Tenant" -ForegroundColor Yellow
-    Write-Host "--------------------------------------------------------------"
+    Write-Host "--------------------------------------------------------------------"
 
     Write-BKDashboardRow `
         -Label "Tenant" `
@@ -155,7 +192,7 @@ function Show-BKDashboard {
 
     Write-Host ""
     Write-Host "Confidence" -ForegroundColor Yellow
-    Write-Host "--------------------------------------------------------------"
+    Write-Host "--------------------------------------------------------------------"
 
     Write-BKConfidenceRow `
         -Label "Identity" `
@@ -174,12 +211,16 @@ function Show-BKDashboard {
         -Value $dashboard.Confidence.Operations
 
     Write-BKConfidenceRow `
+        -Label "Correlation" `
+        -Value $dashboard.Confidence.Correlation
+
+    Write-BKConfidenceRow `
         -Label "Validation" `
         -Value $dashboard.Confidence.Validation
 
     Write-Host ""
     Write-Host "Zero Trust Snapshot" -ForegroundColor Yellow
-    Write-Host "--------------------------------------------------------------"
+    Write-Host "--------------------------------------------------------------------"
 
     Write-BKDashboardRow `
         -Label "Conditional Access Policies" `
@@ -189,11 +230,11 @@ function Show-BKDashboard {
         -Label "Enabled Policies" `
         -Value $dashboard.TrustSnapshot.EnabledPolicies
 
-    Write-BKDashboardRow `
+    Write-BKRiskCountRow `
         -Label "Report-Only Policies" `
         -Value $dashboard.TrustSnapshot.ReportOnlyPolicies
 
-    Write-BKDashboardRow `
+    Write-BKRiskCountRow `
         -Label "Disabled Policies" `
         -Value $dashboard.TrustSnapshot.DisabledPolicies
 
@@ -203,52 +244,162 @@ function Show-BKDashboard {
 
     Write-Host ""
     Write-Host "Authentication Snapshot" -ForegroundColor Yellow
-    Write-Host "--------------------------------------------------------------"
+    Write-Host "--------------------------------------------------------------------"
 
     Write-BKDashboardRow `
         -Label "MFA Registered" `
         -Value $dashboard.TrustSnapshot.MfaRegisteredPercent `
-        -Suffix "%"
+        -Suffix "%" `
+        -Color (Get-BKMetricColor -Value $dashboard.TrustSnapshot.MfaRegisteredPercent)
 
-    Write-BKDashboardRow `
+    Write-BKRiskCountRow `
         -Label "Admins Without MFA" `
         -Value $dashboard.TrustSnapshot.AdminsWithoutMfa
 
     Write-BKDashboardRow `
         -Label "Passwordless Capable" `
         -Value $dashboard.TrustSnapshot.PasswordlessCapablePercent `
-        -Suffix "%"
+        -Suffix "%" `
+        -Color (Get-BKMetricColor -Value $dashboard.TrustSnapshot.PasswordlessCapablePercent)
 
     Write-BKDashboardRow `
         -Label "SSPR Registered" `
         -Value $dashboard.TrustSnapshot.SsprRegisteredPercent `
-        -Suffix "%"
+        -Suffix "%" `
+        -Color (Get-BKMetricColor -Value $dashboard.TrustSnapshot.SsprRegisteredPercent)
 
     Write-BKDashboardRow `
         -Label "System Preferred" `
         -Value $dashboard.TrustSnapshot.SystemPreferredEnabledPercent `
-        -Suffix "%"
+        -Suffix "%" `
+        -Color (Get-BKMetricColor -Value $dashboard.TrustSnapshot.SystemPreferredEnabledPercent)
+
+    Write-Host ""
+    Write-Host "Identity Correlation Snapshot" -ForegroundColor Yellow
+    Write-Host "--------------------------------------------------------------------"
+
+    Write-BKDashboardRow `
+        -Label "Total Identities" `
+        -Value $dashboard.CorrelationSnapshot.TotalIdentities
+
+    Write-BKDashboardRow `
+        -Label "Enabled Identities" `
+        -Value $dashboard.CorrelationSnapshot.EnabledIdentities
+
+    Write-BKRiskCountRow `
+        -Label "Disabled Identities" `
+        -Value $dashboard.CorrelationSnapshot.DisabledIdentities
+
+    Write-BKDashboardRow `
+        -Label "Administrative Identities" `
+        -Value $dashboard.CorrelationSnapshot.AdministrativeIdentities
+
+    Write-BKDashboardRow `
+        -Label "Correlation Coverage" `
+        -Value $dashboard.CorrelationSnapshot.CorrelationCoverage `
+        -Suffix "%" `
+        -Color (Get-BKMetricColor -Value $dashboard.CorrelationSnapshot.CorrelationCoverage)
+
+    Write-BKRiskCountRow `
+        -Label "Users Without MFA" `
+        -Value $dashboard.CorrelationSnapshot.UsersWithoutMfa
+
+    Write-BKRiskCountRow `
+        -Label "Admins Without MFA" `
+        -Value $dashboard.CorrelationSnapshot.AdminsWithoutMfa
+
+    Write-BKDashboardRow `
+        -Label "Passwordless Capable" `
+        -Value $dashboard.CorrelationSnapshot.PasswordlessCapable
+
+    Write-BKRiskCountRow `
+        -Label "Users Without SSPR" `
+        -Value $dashboard.CorrelationSnapshot.UsersWithoutSspr
+
+    Write-BKRiskCountRow `
+        -Label "Identities Requiring Attention" `
+        -Value $dashboard.CorrelationSnapshot.AttentionRequired
+
+    Write-Host ""
+    Write-Host "Authorization Snapshot" -ForegroundColor Yellow
+    Write-Host "--------------------------------------------------------------------"
+
+    Write-BKDashboardRow `
+        -Label "Active Role Assignments" `
+        -Value $dashboard.AuthorizationSnapshot.ActiveRoleAssignments
+
+    Write-BKDashboardRow `
+        -Label "User Role Assignments" `
+        -Value $dashboard.AuthorizationSnapshot.UserRoleAssignments
+
+    Write-BKDashboardRow `
+        -Label "Group Role Assignments" `
+        -Value $dashboard.AuthorizationSnapshot.GroupRoleAssignments
+
+    Write-BKDashboardRow `
+        -Label "Privileged Users" `
+        -Value $dashboard.AuthorizationSnapshot.PrivilegedUsers
+
+    Write-BKRiskCountRow `
+        -Label "Privileged Users Without MFA" `
+        -Value $dashboard.AuthorizationSnapshot.PrivilegedUsersWithoutMfa
+
+    Write-BKDashboardRow `
+        -Label "Service Principal Assignments" `
+        -Value $dashboard.AuthorizationSnapshot.ServicePrincipalRoleAssignments
+
+    Write-BKRiskCountRow `
+        -Label "Deprecated Role Assignments" `
+        -Value $dashboard.AuthorizationSnapshot.DeprecatedRoleAssignments
+
+    Write-BKRiskCountRow `
+        -Label "Assignments Requiring Review" `
+        -Value $dashboard.AuthorizationSnapshot.RoleAssignmentsRequiringReview
+
+    Write-BKRiskCountRow `
+        -Label "High-Severity Findings" `
+        -Value $dashboard.AuthorizationSnapshot.HighSeverityAuthorizationFindings
+
+    Write-BKRiskCountRow `
+        -Label "Medium-Severity Findings" `
+        -Value $dashboard.AuthorizationSnapshot.MediumSeverityAuthorizationFindings
 
     Write-Host ""
     Write-Host "Overall Platform Confidence" -ForegroundColor Green
-    Write-Host "=============================================================="
+    Write-Host "===================================================================="
 
     $overallValue = Format-BKValue `
         -Value $dashboard.Confidence.Overall `
         -Suffix "%"
 
-    $overallColor = Get-BKConfidenceColor `
+    $overallColor = Get-BKMetricColor `
         -Value $dashboard.Confidence.Overall
 
-    Write-Host "".PadRight(24) -NoNewline
+    Write-Host "".PadRight(27) -NoNewline
     Write-Host $overallValue -ForegroundColor $overallColor
 
-    Write-Host "=============================================================="
+    Write-Host "===================================================================="
+
+    Write-Host ""
+    Write-Host "Findings" -ForegroundColor Yellow
+    Write-Host "--------------------------------------------------------------------"
+
+    Write-BKRiskCountRow `
+        -Label "Warnings" `
+        -Value $dashboard.Findings.Warnings
+
+    Write-BKRiskCountRow `
+        -Label "Failures" `
+        -Value $dashboard.Findings.Failures
+
+    Write-BKDashboardRow `
+        -Label "Recommendations" `
+        -Value $dashboard.Findings.RecommendationCount
 
     if ($dashboard.Findings.Recommendations.Count -gt 0) {
         Write-Host ""
         Write-Host "Top Recommendations" -ForegroundColor Yellow
-        Write-Host "--------------------------------------------------------------"
+        Write-Host "--------------------------------------------------------------------"
 
         $dashboard.Findings.Recommendations |
             Select-Object -First $RecommendationLimit |
@@ -258,6 +409,36 @@ function Show-BKDashboard {
     }
 
     Write-Host ""
+    Write-Host "Report Availability" -ForegroundColor Yellow
+    Write-Host "--------------------------------------------------------------------"
+
+    $reportProperties = $dashboard.Reports.PSObject.Properties
+
+    foreach ($reportProperty in $reportProperties) {
+        $status = if ($reportProperty.Value) {
+            "Available"
+        }
+        else {
+            "Missing"
+        }
+
+        $color = if ($reportProperty.Value) {
+            "Green"
+        }
+        else {
+            "Red"
+        }
+
+        $label = $reportProperty.Name -replace "Available$", ""
+
+        Write-BKDashboardRow `
+            -Label $label `
+            -Value $status `
+            -Color $color
+    }
+
+    Write-Host ""
     Write-Host "Generated: $($dashboard.GeneratedAt)" -ForegroundColor DarkGray
+    Write-Host "====================================================================" -ForegroundColor Cyan
     Write-Host ""
 }

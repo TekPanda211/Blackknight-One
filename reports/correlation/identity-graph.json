@@ -1,40 +1,116 @@
 {
   "Platform": "Blackknight One",
   "Version": "0.5.0-alpha",
-  "GeneratedAt": "2026-07-10T20:07:11.0032125Z",
+  "GeneratedAt": "2026-07-10T23:26:15.8295938Z",
   "Result": {
     "Engine": "Correlation Engine",
     "Version": "0.5.0-alpha",
     "Status": "Integrated",
     "Health": "Degraded",
-    "Confidence": 60,
-    "ChecksRun": 5,
+    "Confidence": 45,
+    "ChecksRun": 7,
     "Passed": 3,
-    "Warnings": 1,
-    "Failed": 1,
-    "Timestamp": "2026-07-10T20:07:10.9813824Z",
+    "Warnings": 0,
+    "Failed": 4,
+    "Timestamp": "2026-07-10T23:26:15.7311875Z",
     "Evidence": [
-      "10 identities correlated.",
-      "Authentication correlation coverage is 100%.",
-      "No administrative users without MFA were detected."
+      "Total identities correlated: 10",
+      "Authentication correlation coverage: 100%",
+      "Privileged users: 4",
+      "Privileged users without MFA: 0",
+      "Active directory-role assignments: 13",
+      "Service-principal role assignments: 3",
+      "Deprecated role assignments: 2",
+      "High-severity authorization findings: 2",
+      "Identities requiring attention: 10"
     ],
     "Recommendations": [
-      "3 identities are not registered for MFA.",
-      "No passwordless-capable identities were detected."
+      "Prioritize tenant-wide MFA registration.",
+      "Evaluate passkeys, FIDO2, Windows Hello for Business, and Temporary Access Pass.",
+      "Review and remove deprecated directory-role assignments where no longer required.",
+      "Review high-severity directory-role findings and document required exceptions."
     ]
   },
+  "Checks": [
+    {
+      "Name": "Identity Correlation",
+      "Status": "PASS",
+      "Points": 10,
+      "MaximumPoints": 10,
+      "Details": "10 identities were correlated.",
+      "Recommendation": ""
+    },
+    {
+      "Name": "Correlation Coverage",
+      "Status": "PASS",
+      "Points": 15,
+      "MaximumPoints": 15,
+      "Details": "Authentication correlation coverage is 100%.",
+      "Recommendation": ""
+    },
+    {
+      "Name": "Privileged MFA Coverage",
+      "Status": "PASS",
+      "Points": 20,
+      "MaximumPoints": 20,
+      "Details": "No privileged users without MFA were detected.",
+      "Recommendation": ""
+    },
+    {
+      "Name": "User MFA Coverage",
+      "Status": "FAIL",
+      "Points": 0,
+      "MaximumPoints": 15,
+      "Details": "3 users are not registered for MFA.",
+      "Recommendation": "Prioritize tenant-wide MFA registration."
+    },
+    {
+      "Name": "Passwordless Adoption",
+      "Status": "FAIL",
+      "Points": 0,
+      "MaximumPoints": 10,
+      "Details": "No passwordless-capable identities were detected.",
+      "Recommendation": "Evaluate passkeys, FIDO2, Windows Hello for Business, and Temporary Access Pass."
+    },
+    {
+      "Name": "Deprecated Role Hygiene",
+      "Status": "FAIL",
+      "Points": 0,
+      "MaximumPoints": 15,
+      "Details": "2 deprecated directory-role assignments were detected.",
+      "Recommendation": "Review and remove deprecated directory-role assignments where no longer required."
+    },
+    {
+      "Name": "High-Severity Authorization Findings",
+      "Status": "FAIL",
+      "Points": 0,
+      "MaximumPoints": 15,
+      "Details": "2 high-severity authorization findings were detected.",
+      "Recommendation": "Review high-severity directory-role findings and document required exceptions."
+    }
+  ],
   "Summary": {
     "TotalIdentities": 10,
     "EnabledIdentities": 10,
     "DisabledIdentities": 0,
     "AdministrativeIdentities": 3,
+    "PrivilegedUsers": 4,
     "CorrelationCoverage": 100.0,
     "UsersWithoutMfa": 3,
     "AdminsWithoutMfa": 0,
+    "PrivilegedUsersWithoutMfa": 0,
     "PasswordlessCapable": 0,
     "UsersWithoutPasswordless": 10,
     "UsersWithoutSspr": 4,
-    "AttentionRequired": 10
+    "AttentionRequired": 10,
+    "ActiveRoleAssignments": 13,
+    "UserRoleAssignments": 10,
+    "GroupRoleAssignments": 0,
+    "ServicePrincipalRoleAssignments": 3,
+    "DeprecatedRoleAssignments": 2,
+    "RoleAssignmentsRequiringReview": 3,
+    "HighSeverityAuthorizationFindings": 2,
+    "MediumSeverityAuthorizationFindings": 0
   },
   "Identities": [
     {
@@ -72,7 +148,7 @@
       "AttentionReasons": [
         "Not passwordless capable"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9746090Z"
+      "Timestamp": "2026-07-10T23:26:14.3212760Z"
     },
     {
       "Id": "311bca43-ee80-463c-b359-e0616a993350",
@@ -109,7 +185,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9672259Z"
+          "Timestamp": "2026-07-10T23:26:14.2825189Z"
         },
         {
           "AssignmentId": "3ywjKSOT_UKt4h0JevPk3kPKGzGA7jxGs1ngYWqZM1A-1",
@@ -127,7 +203,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9684996Z"
+          "Timestamp": "2026-07-10T23:26:14.2892696Z"
         }
       ],
       "HasDeprecatedRole": false,
@@ -153,7 +229,7 @@
       "AttentionReasons": [
         "Not passwordless capable"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9748847Z"
+      "Timestamp": "2026-07-10T23:26:14.4651536Z"
     },
     {
       "Id": "8914a3eb-b967-436e-9f9f-c5cf8fa7d2a8",
@@ -189,7 +265,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9674314Z"
+          "Timestamp": "2026-07-10T23:26:14.2867302Z"
         }
       ],
       "HasDeprecatedRole": false,
@@ -214,7 +290,7 @@
       "AttentionReasons": [
         "Not passwordless capable"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9750837Z"
+      "Timestamp": "2026-07-10T23:26:14.4660071Z"
     },
     {
       "Id": "8affac18-66de-4818-bfae-bd0a6efa02db",
@@ -251,7 +327,7 @@
       "AttentionReasons": [
         "Not passwordless capable"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9752479Z"
+      "Timestamp": "2026-07-10T23:26:14.4664391Z"
     },
     {
       "Id": "0ba6089b-6309-45fe-902a-2b0b4d4726d1",
@@ -290,7 +366,7 @@
         "Not passwordless capable",
         "SSPR not registered"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9754103Z"
+      "Timestamp": "2026-07-10T23:26:14.4668162Z"
     },
     {
       "Id": "b0f92b90-2849-43a9-9f6b-33201c3106c3",
@@ -329,7 +405,7 @@
         "Not passwordless capable",
         "SSPR not registered"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9755765Z"
+      "Timestamp": "2026-07-10T23:26:14.4671663Z"
     },
     {
       "Id": "3a7f5488-3ad0-44a9-a33d-005a74e86ba2",
@@ -370,7 +446,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9673600Z"
+          "Timestamp": "2026-07-10T23:26:14.2862619Z"
         },
         {
           "AssignmentId": "y-RKGSaxskC9W2CRs4CXfYhUfzrQOqlEoz0AWnToa6I-1",
@@ -388,7 +464,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9680668Z"
+          "Timestamp": "2026-07-10T23:26:14.2885677Z"
         },
         {
           "AssignmentId": "OqLR5hHa5EuVcL78htBnp4hUfzrQOqlEoz0AWnToa6I-1",
@@ -406,7 +482,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9683342Z"
+          "Timestamp": "2026-07-10T23:26:14.2888596Z"
         },
         {
           "AssignmentId": "l1cxFy0QtECT4EMgYsrKGIhUfzrQOqlEoz0AWnToa6I-1",
@@ -424,7 +500,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9684303Z"
+          "Timestamp": "2026-07-10T23:26:14.2890757Z"
         },
         {
           "AssignmentId": "3ywjKSOT_UKt4h0JevPk3ohUfzrQOqlEoz0AWnToa6I-1",
@@ -442,7 +518,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9737632Z"
+          "Timestamp": "2026-07-10T23:26:14.2894553Z"
         },
         {
           "AssignmentId": "GvkEP9dK00u8-kmILqGoiohUfzrQOqlEoz0AWnToa6I-1",
@@ -460,7 +536,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9739604Z"
+          "Timestamp": "2026-07-10T23:26:14.2898802Z"
         }
       ],
       "HasDeprecatedRole": false,
@@ -486,7 +562,7 @@
       "AttentionReasons": [
         "Not passwordless capable"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9759043Z"
+      "Timestamp": "2026-07-10T23:26:14.4678967Z"
     },
     {
       "Id": "ebf5b0de-e09b-4ffd-96bf-b82dd2f9a731",
@@ -525,7 +601,7 @@
         "Not passwordless capable",
         "SSPR not registered"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9762967Z"
+      "Timestamp": "2026-07-10T23:26:14.4683122Z"
     },
     {
       "Id": "6bffa95f-dfec-4666-9747-c2d97d8d859b",
@@ -566,7 +642,7 @@
         "Not passwordless capable",
         "SSPR not registered"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9766864Z"
+      "Timestamp": "2026-07-10T23:26:14.4686810Z"
     },
     {
       "Id": "96f30b17-6cf1-488e-b50b-675ef55193c2",
@@ -602,7 +678,7 @@
           "RequiresReview": false,
           "Severity": "None",
           "ReviewReasons": [],
-          "Timestamp": "2026-07-10T20:07:10.9738797Z"
+          "Timestamp": "2026-07-10T23:26:14.2896793Z"
         }
       ],
       "HasDeprecatedRole": false,
@@ -624,7 +700,251 @@
       "AttentionReasons": [
         "Not passwordless capable"
       ],
-      "Timestamp": "2026-07-10T20:07:10.9771292Z"
+      "Timestamp": "2026-07-10T23:26:14.4690992Z"
+    }
+  ],
+  "DirectoryRoleAssignments": [
+    {
+      "AssignmentId": "lAPpYvVpN0KRkAEhdxReEEPKGzGA7jxGs1ngYWqZM1A-1",
+      "PrincipalId": "311bca43-ee80-463c-b359-e0616a993350",
+      "PrincipalName": "admin",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "62e90394-69f5-4237-9190-012177145e10",
+      "RoleName": "Global Administrator",
+      "RoleDescription": "Can manage all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "62e90394-69f5-4237-9190-012177145e10",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1122253Z"
+    },
+    {
+      "AssignmentId": "lAPpYvVpN0KRkAEhdxReEIhUfzrQOqlEoz0AWnToa6I-1",
+      "PrincipalId": "3a7f5488-3ad0-44a9-a33d-005a74e86ba2",
+      "PrincipalName": "Sudo",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "62e90394-69f5-4237-9190-012177145e10",
+      "RoleName": "Global Administrator",
+      "RoleDescription": "Can manage all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "62e90394-69f5-4237-9190-012177145e10",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1125697Z"
+    },
+    {
+      "AssignmentId": "lAPpYvVpN0KRkAEhdxReEOujFIlnuW5Dn5_Fz4-n0qg-1",
+      "PrincipalId": "8914a3eb-b967-436e-9f9f-c5cf8fa7d2a8",
+      "PrincipalName": "Broken Arrow",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "62e90394-69f5-4237-9190-012177145e10",
+      "RoleName": "Global Administrator",
+      "RoleDescription": "Can manage all aspects of Microsoft Entra ID and Microsoft services that use Microsoft Entra identities.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "62e90394-69f5-4237-9190-012177145e10",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1128038Z"
+    },
+    {
+      "AssignmentId": "4-PYiFWPHkqVOpuYmLiHa0EPUDGBWPlCgCJ_kI8QQwQ-1",
+      "PrincipalId": "31500f41-5881-42f9-8022-7f908f104304",
+      "PrincipalName": "Microsoft.Azure.SyncFabric",
+      "PrincipalType": "ServicePrincipal",
+      "RoleDefinitionId": "88d8e3e3-8f55-4a1e-953a-9b9898b8876b",
+      "RoleName": "Directory Readers",
+      "RoleDescription": "Can read basic directory information. Commonly used to grant directory read access to applications and guests.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "88d8e3e3-8f55-4a1e-953a-9b9898b8876b",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": true,
+      "Severity": "Informational",
+      "ReviewReasons": [
+        "Role assigned to service principal"
+      ],
+      "Timestamp": "2026-07-10T23:26:15.1131728Z"
+    },
+    {
+      "AssignmentId": "NIwd6_WsDUaEJMHxpvvbhVIpTKPXzPlPrpU8TclufO0-1",
+      "PrincipalId": "a34c2952-ccd7-4ff9-ae95-3c4dc96e7ced",
+      "PrincipalName": "Microsoft Office 365 Portal",
+      "PrincipalType": "ServicePrincipal",
+      "RoleDefinitionId": "eb1d8c34-acf5-460d-8424-c1f1a6fbdb85",
+      "RoleName": "AdHoc License Administrator",
+      "RoleDescription": "Deprecated - Do Not Use.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "eb1d8c34-acf5-460d-8424-c1f1a6fbdb85",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": true,
+      "RequiresReview": true,
+      "Severity": "High",
+      "ReviewReasons": [
+        "Deprecated directory role",
+        "Role assigned to service principal"
+      ],
+      "Timestamp": "2026-07-10T23:26:15.1133546Z"
+    },
+    {
+      "AssignmentId": "0gJe1hQCdEaOXXZvszDiwFIpTKPXzPlPrpU8TclufO0-1",
+      "PrincipalId": "a34c2952-ccd7-4ff9-ae95-3c4dc96e7ced",
+      "PrincipalName": "Microsoft Office 365 Portal",
+      "PrincipalType": "ServicePrincipal",
+      "RoleDefinitionId": "d65e02d2-0214-4674-8e5d-766fb330e2c0",
+      "RoleName": "Email Verified User Creator",
+      "RoleDescription": "Deprecated - Do Not Use.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "d65e02d2-0214-4674-8e5d-766fb330e2c0",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": true,
+      "RequiresReview": true,
+      "Severity": "High",
+      "ReviewReasons": [
+        "Deprecated directory role",
+        "Role assigned to service principal"
+      ],
+      "Timestamp": "2026-07-10T23:26:15.1134569Z"
+    },
+    {
+      "AssignmentId": "y-RKGSaxskC9W2CRs4CXfYhUfzrQOqlEoz0AWnToa6I-1",
+      "PrincipalId": "3a7f5488-3ad0-44a9-a33d-005a74e86ba2",
+      "PrincipalName": "Sudo",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "194ae4cb-b126-40b2-bd5b-6091b380977d",
+      "RoleName": "Security Administrator",
+      "RoleDescription": "Can read security information and reports, and manage configuration in Microsoft Entra ID and Office 365.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "194ae4cb-b126-40b2-bd5b-6091b380977d",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1136518Z"
+    },
+    {
+      "AssignmentId": "OqLR5hHa5EuVcL78htBnp4hUfzrQOqlEoz0AWnToa6I-1",
+      "PrincipalId": "3a7f5488-3ad0-44a9-a33d-005a74e86ba2",
+      "PrincipalName": "Sudo",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "e6d1a23a-da11-4be4-9570-befc86d067a7",
+      "RoleName": "Compliance Data Administrator",
+      "RoleDescription": "Creates and manages compliance content.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "e6d1a23a-da11-4be4-9570-befc86d067a7",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1137582Z"
+    },
+    {
+      "AssignmentId": "l1cxFy0QtECT4EMgYsrKGIhUfzrQOqlEoz0AWnToa6I-1",
+      "PrincipalId": "3a7f5488-3ad0-44a9-a33d-005a74e86ba2",
+      "PrincipalName": "Sudo",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "17315797-102d-40b4-93e0-432062caca18",
+      "RoleName": "Compliance Administrator",
+      "RoleDescription": "Can read and manage compliance configuration and reports in Microsoft Entra ID and Microsoft 365.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "17315797-102d-40b4-93e0-432062caca18",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1138457Z"
+    },
+    {
+      "AssignmentId": "3ywjKSOT_UKt4h0JevPk3kPKGzGA7jxGs1ngYWqZM1A-1",
+      "PrincipalId": "311bca43-ee80-463c-b359-e0616a993350",
+      "PrincipalName": "admin",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "29232cdf-9323-42fd-ade2-1d097af3e4de",
+      "RoleName": "Exchange Administrator",
+      "RoleDescription": "Can manage all aspects of the Exchange product.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "29232cdf-9323-42fd-ade2-1d097af3e4de",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1139439Z"
+    },
+    {
+      "AssignmentId": "3ywjKSOT_UKt4h0JevPk3ohUfzrQOqlEoz0AWnToa6I-1",
+      "PrincipalId": "3a7f5488-3ad0-44a9-a33d-005a74e86ba2",
+      "PrincipalName": "Sudo",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "29232cdf-9323-42fd-ade2-1d097af3e4de",
+      "RoleName": "Exchange Administrator",
+      "RoleDescription": "Can manage all aspects of the Exchange product.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "29232cdf-9323-42fd-ade2-1d097af3e4de",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1140280Z"
+    },
+    {
+      "AssignmentId": "W2XVAs_BX06Y2l-5GQhb9hcL85bxbI5ItQtnXvVRk8I-1",
+      "PrincipalId": "96f30b17-6cf1-488e-b50b-675ef55193c2",
+      "PrincipalName": "Todd Crow",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "02d5655b-c1cf-4e5f-98da-5fb919085bf6",
+      "RoleName": "Purview Workload Content Writer",
+      "RoleDescription": "Read and edit data from Microsoft 365 when accessing from the Microsoft Purview portal.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "02d5655b-c1cf-4e5f-98da-5fb919085bf6",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1141131Z"
+    },
+    {
+      "AssignmentId": "GvkEP9dK00u8-kmILqGoiohUfzrQOqlEoz0AWnToa6I-1",
+      "PrincipalId": "3a7f5488-3ad0-44a9-a33d-005a74e86ba2",
+      "PrincipalName": "Sudo",
+      "PrincipalType": "User",
+      "RoleDefinitionId": "3f04f91a-4ad7-4bd3-bcfa-49882ea1a88a",
+      "RoleName": "Purview Workload Content Administrator",
+      "RoleDescription": "Manage or purge data from Microsoft 365 when accessing from the Microsoft Purview portal.",
+      "IsBuiltIn": true,
+      "RoleTemplateId": "3f04f91a-4ad7-4bd3-bcfa-49882ea1a88a",
+      "DirectoryScopeId": "/",
+      "AssignmentType": "Active",
+      "IsDeprecated": false,
+      "RequiresReview": false,
+      "Severity": "None",
+      "ReviewReasons": [],
+      "Timestamp": "2026-07-10T23:26:15.1143012Z"
     }
   ]
 }

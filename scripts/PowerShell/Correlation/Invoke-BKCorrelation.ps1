@@ -3,8 +3,22 @@
 Blackknight One Correlation Engine
 
 .DESCRIPTION
-Builds a normalized identity graph and evaluates correlated
-identity and authentication evidence.
+Builds a normalized identity graph and evaluates correlated identity,
+authentication, and authorization evidence.
+
+Current correlation layers include:
+
+- Microsoft Entra users
+- Account state
+- Authentication registration
+- MFA coverage
+- Passwordless readiness
+- SSPR registration
+- Active directory-role assignments
+- Privileged identity detection
+- Service-principal role assignments
+- Deprecated directory-role detection
+- Authorization review findings
 #>
 
 [CmdletBinding()]
@@ -36,6 +50,37 @@ function Write-BKCorrelationSection {
     Write-Host "========================================" -ForegroundColor Cyan
 }
 
+function New-BKCorrelationCheck {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Name,
+
+        [Parameter(Mandatory)]
+        [ValidateSet("PASS", "WARN", "FAIL")]
+        [string]$Status,
+
+        [Parameter(Mandatory)]
+        [int]$Points,
+
+        [Parameter(Mandatory)]
+        [int]$MaximumPoints,
+
+        [Parameter(Mandatory)]
+        [string]$Details,
+
+        [string]$Recommendation
+    )
+
+    [PSCustomObject]@{
+        Name           = $Name
+        Status         = $Status
+        Points         = $Points
+        MaximumPoints  = $MaximumPoints
+        Details        = $Details
+        Recommendation = $Recommendation
+    }
+}
+
 function Invoke-BKCorrelation {
     Write-BKCorrelationSection "Blackknight Correlation Engine"
 
@@ -43,26 +88,52 @@ function Invoke-BKCorrelation {
         Connect-BKGraph -Scopes @(
             "User.Read.All",
             "Directory.Read.All",
-            "AuditLog.Read.All"
+            "AuditLog.Read.All",
+            "RoleManagement.Read.Directory"
         ) | Out-Null
+
+        Write-BKLog `
+            -Message "Collecting correlated identity data..." `
+            -Level Info
 
         $identities = @(
             Get-BKIdentityGraph -SkipGraphConnect
         )
 
+        Write-BKLog `
+            -Message "Collecting authorization assignments..." `
+            -Level Info
+
+        $directoryRoles = @(
+            Get-BKDirectoryRoles -SkipGraphConnect
+        )
+
         $enabledUsers = @(
             $identities |
-                Where-Object { $_.AccountEnabled -eq $true }
+                Where-Object {
+                    $_.AccountEnabled -eq $true
+                }
         )
 
         $disabledUsers = @(
             $identities |
-                Where-Object { $_.AccountEnabled -ne $true }
+                Where-Object {
+                    $_.AccountEnabled -ne $true
+                }
         )
 
         $administrativeUsers = @(
             $identities |
-                Where-Object { $_.IsAdmin -eq $true }
+                Where-Object {
+                    $_.IsAdmin -eq $true
+                }
+        )
+
+        $privilegedUsers = @(
+            $identities |
+                Where-Object {
+                    $_.IsPrivileged -eq $true
+                }
         )
 
         $usersWithoutMfa = @(
@@ -77,6 +148,14 @@ function Invoke-BKCorrelation {
                 Where-Object {
                     $_.IsAdmin -eq $true -and
                     $_.IsMfaRegistered -eq $false
+                }
+        )
+
+        $privilegedUsersWithoutMfa = @(
+            $identities |
+                Where-Object {
+                    $_.IsPrivileged -eq $true -and
+                    $_.IsMfaRegistered -ne $true
                 }
         )
 
@@ -103,19 +182,70 @@ function Invoke-BKCorrelation {
 
         $attentionRequired = @(
             $identities |
-                Where-Object { $_.RequiresAttention -eq $true }
+                Where-Object {
+                    $_.RequiresAttention -eq $true
+                }
+        )
+
+        $servicePrincipalRoleAssignments = @(
+            $directoryRoles |
+                Where-Object {
+                    $_.PrincipalType -eq "ServicePrincipal"
+                }
+        )
+
+        $userRoleAssignments = @(
+            $directoryRoles |
+                Where-Object {
+                    $_.PrincipalType -eq "User"
+                }
+        )
+
+        $groupRoleAssignments = @(
+            $directoryRoles |
+                Where-Object {
+                    $_.PrincipalType -eq "Group"
+                }
+        )
+
+        $deprecatedRoleAssignments = @(
+            $directoryRoles |
+                Where-Object {
+                    $_.IsDeprecated -eq $true
+                }
+        )
+
+        $roleAssignmentsRequiringReview = @(
+            $directoryRoles |
+                Where-Object {
+                    $_.RequiresReview -eq $true
+                }
+        )
+
+        $highSeverityAuthorizationFindings = @(
+            $directoryRoles |
+                Where-Object {
+                    $_.Severity -eq "High"
+                }
+        )
+
+        $mediumSeverityAuthorizationFindings = @(
+            $directoryRoles |
+                Where-Object {
+                    $_.Severity -eq "Medium"
+                }
         )
 
         $totalUsers = $identities.Count
 
-        $correlationCoverage = if ($totalUsers -gt 0) {
-            $correlatedUsers = @(
-                $identities |
-                    Where-Object {
-                        $null -ne $_.IsMfaRegistered
-                    }
-            ).Count
+        $correlatedUsers = @(
+            $identities |
+                Where-Object {
+                    $null -ne $_.IsMfaRegistered
+                }
+        ).Count
 
+        $correlationCoverage = if ($totalUsers -gt 0) {
             [math]::Round(
                 ($correlatedUsers / $totalUsers) * 100,
                 2
@@ -125,74 +255,203 @@ function Invoke-BKCorrelation {
             0
         }
 
-        $score = 0
-        $checksRun = 5
-        $passed = 0
-        $warnings = 0
-        $failed = 0
-        $evidence = @()
-        $recommendations = @()
+        $checks = @()
 
         if ($totalUsers -gt 0) {
-            $score += 20
-            $passed++
-            $evidence += "$totalUsers identities correlated."
+            $checks += New-BKCorrelationCheck `
+                -Name "Identity Correlation" `
+                -Status "PASS" `
+                -Points 10 `
+                -MaximumPoints 10 `
+                -Details "$totalUsers identities were correlated."
         }
         else {
-            $failed++
-            $recommendations += "No identities were available for correlation."
+            $checks += New-BKCorrelationCheck `
+                -Name "Identity Correlation" `
+                -Status "FAIL" `
+                -Points 0 `
+                -MaximumPoints 10 `
+                -Details "No identities were available for correlation." `
+                -Recommendation "Run identity discovery and verify Microsoft Graph user access."
         }
 
         if ($correlationCoverage -ge 95) {
-            $score += 20
-            $passed++
-            $evidence += "Authentication correlation coverage is $correlationCoverage%."
+            $checks += New-BKCorrelationCheck `
+                -Name "Correlation Coverage" `
+                -Status "PASS" `
+                -Points 15 `
+                -MaximumPoints 15 `
+                -Details "Authentication correlation coverage is $correlationCoverage%."
         }
         elseif ($correlationCoverage -ge 75) {
-            $score += 10
-            $warnings++
-            $recommendations +=
-                "Improve authentication correlation coverage beyond $correlationCoverage%."
+            $checks += New-BKCorrelationCheck `
+                -Name "Correlation Coverage" `
+                -Status "WARN" `
+                -Points 8 `
+                -MaximumPoints 15 `
+                -Details "Authentication correlation coverage is $correlationCoverage%." `
+                -Recommendation "Investigate identities missing authentication registration data."
         }
         else {
-            $failed++
-            $recommendations +=
-                "Authentication correlation coverage is incomplete."
+            $checks += New-BKCorrelationCheck `
+                -Name "Correlation Coverage" `
+                -Status "FAIL" `
+                -Points 0 `
+                -MaximumPoints 15 `
+                -Details "Authentication correlation coverage is $correlationCoverage%." `
+                -Recommendation "Restore authentication report coverage before relying on identity conclusions."
         }
 
-        if ($adminsWithoutMfa.Count -eq 0) {
-            $score += 20
-            $passed++
-            $evidence += "No administrative users without MFA were detected."
+        if ($privilegedUsersWithoutMfa.Count -eq 0) {
+            $checks += New-BKCorrelationCheck `
+                -Name "Privileged MFA Coverage" `
+                -Status "PASS" `
+                -Points 20 `
+                -MaximumPoints 20 `
+                -Details "No privileged users without MFA were detected."
         }
         else {
-            $failed++
-            $recommendations +=
-                "Require MFA for all administrative identities immediately."
+            $checks += New-BKCorrelationCheck `
+                -Name "Privileged MFA Coverage" `
+                -Status "FAIL" `
+                -Points 0 `
+                -MaximumPoints 20 `
+                -Details "$($privilegedUsersWithoutMfa.Count) privileged users are not registered for MFA." `
+                -Recommendation "Require MFA registration for all privileged identities immediately."
         }
 
         if ($usersWithoutMfa.Count -eq 0) {
-            $score += 20
-            $passed++
-            $evidence += "All correlated identities are registered for MFA."
+            $checks += New-BKCorrelationCheck `
+                -Name "User MFA Coverage" `
+                -Status "PASS" `
+                -Points 15 `
+                -MaximumPoints 15 `
+                -Details "All correlated users are registered for MFA."
+        }
+        elseif ($usersWithoutMfa.Count -le 2) {
+            $checks += New-BKCorrelationCheck `
+                -Name "User MFA Coverage" `
+                -Status "WARN" `
+                -Points 8 `
+                -MaximumPoints 15 `
+                -Details "$($usersWithoutMfa.Count) users are not registered for MFA." `
+                -Recommendation "Complete MFA registration for the remaining users."
         }
         else {
-            $warnings++
-            $recommendations +=
-                "$($usersWithoutMfa.Count) identities are not registered for MFA."
+            $checks += New-BKCorrelationCheck `
+                -Name "User MFA Coverage" `
+                -Status "FAIL" `
+                -Points 0 `
+                -MaximumPoints 15 `
+                -Details "$($usersWithoutMfa.Count) users are not registered for MFA." `
+                -Recommendation "Prioritize tenant-wide MFA registration."
         }
 
         if ($passwordlessUsers.Count -gt 0) {
-            $score += 20
-            $passed++
-            $evidence +=
-                "$($passwordlessUsers.Count) identities are passwordless capable."
+            $checks += New-BKCorrelationCheck `
+                -Name "Passwordless Adoption" `
+                -Status "PASS" `
+                -Points 10 `
+                -MaximumPoints 10 `
+                -Details "$($passwordlessUsers.Count) identities are passwordless capable."
         }
         else {
-            $failed++
-            $recommendations +=
-                "No passwordless-capable identities were detected."
+            $checks += New-BKCorrelationCheck `
+                -Name "Passwordless Adoption" `
+                -Status "FAIL" `
+                -Points 0 `
+                -MaximumPoints 10 `
+                -Details "No passwordless-capable identities were detected." `
+                -Recommendation "Evaluate passkeys, FIDO2, Windows Hello for Business, and Temporary Access Pass."
         }
+
+        if ($deprecatedRoleAssignments.Count -eq 0) {
+            $checks += New-BKCorrelationCheck `
+                -Name "Deprecated Role Hygiene" `
+                -Status "PASS" `
+                -Points 15 `
+                -MaximumPoints 15 `
+                -Details "No deprecated directory-role assignments were detected."
+        }
+        else {
+            $checks += New-BKCorrelationCheck `
+                -Name "Deprecated Role Hygiene" `
+                -Status "FAIL" `
+                -Points 0 `
+                -MaximumPoints 15 `
+                -Details "$($deprecatedRoleAssignments.Count) deprecated directory-role assignments were detected." `
+                -Recommendation "Review and remove deprecated directory-role assignments where no longer required."
+        }
+
+        if ($highSeverityAuthorizationFindings.Count -eq 0) {
+            $checks += New-BKCorrelationCheck `
+                -Name "High-Severity Authorization Findings" `
+                -Status "PASS" `
+                -Points 15 `
+                -MaximumPoints 15 `
+                -Details "No high-severity authorization findings were detected."
+        }
+        else {
+            $checks += New-BKCorrelationCheck `
+                -Name "High-Severity Authorization Findings" `
+                -Status "FAIL" `
+                -Points 0 `
+                -MaximumPoints 15 `
+                -Details "$($highSeverityAuthorizationFindings.Count) high-severity authorization findings were detected." `
+                -Recommendation "Review high-severity directory-role findings and document required exceptions."
+        }
+
+        $score = (
+            $checks |
+                Measure-Object -Property Points -Sum
+        ).Sum
+
+        if ($null -eq $score) {
+            $score = 0
+        }
+
+        $passed = @(
+            $checks |
+                Where-Object {
+                    $_.Status -eq "PASS"
+                }
+        ).Count
+
+        $warnings = @(
+            $checks |
+                Where-Object {
+                    $_.Status -eq "WARN"
+                }
+        ).Count
+
+        $failed = @(
+            $checks |
+                Where-Object {
+                    $_.Status -eq "FAIL"
+                }
+        ).Count
+
+        $recommendations = @(
+            $checks |
+                Where-Object {
+                    -not [string]::IsNullOrWhiteSpace(
+                        [string]$_.Recommendation
+                    )
+                } |
+                Select-Object -ExpandProperty Recommendation -Unique
+        )
+
+        $evidence = @(
+            "Total identities correlated: $totalUsers"
+            "Authentication correlation coverage: $correlationCoverage%"
+            "Privileged users: $($privilegedUsers.Count)"
+            "Privileged users without MFA: $($privilegedUsersWithoutMfa.Count)"
+            "Active directory-role assignments: $($directoryRoles.Count)"
+            "Service-principal role assignments: $($servicePrincipalRoleAssignments.Count)"
+            "Deprecated role assignments: $($deprecatedRoleAssignments.Count)"
+            "High-severity authorization findings: $($highSeverityAuthorizationFindings.Count)"
+            "Identities requiring attention: $($attentionRequired.Count)"
+        )
 
         $health = if ($failed -gt 0) {
             "Degraded"
@@ -210,7 +469,7 @@ function Invoke-BKCorrelation {
             -Status "Integrated" `
             -Health $health `
             -Confidence $score `
-            -ChecksRun $checksRun `
+            -ChecksRun $checks.Count `
             -Passed $passed `
             -Warnings $warnings `
             -Failed $failed `
@@ -220,25 +479,55 @@ function Invoke-BKCorrelation {
         Write-Host ""
         Write-Host "Identity Correlation"
         Write-Host "----------------------------------------"
-        Write-Host "Total Identities           : $totalUsers"
-        Write-Host "Enabled Identities         : $($enabledUsers.Count)"
-        Write-Host "Disabled Identities        : $($disabledUsers.Count)"
-        Write-Host "Administrative Identities  : $($administrativeUsers.Count)"
-        Write-Host "Correlation Coverage       : $correlationCoverage%"
+        Write-Host "Total Identities              : $totalUsers"
+        Write-Host "Enabled Identities            : $($enabledUsers.Count)"
+        Write-Host "Disabled Identities           : $($disabledUsers.Count)"
+        Write-Host "Administrative Identities     : $($administrativeUsers.Count)"
+        Write-Host "Privileged Identities         : $($privilegedUsers.Count)"
+        Write-Host "Correlation Coverage          : $correlationCoverage%"
 
         Write-Host ""
         Write-Host "Authentication Correlation"
         Write-Host "----------------------------------------"
-        Write-Host "Users Without MFA          : $($usersWithoutMfa.Count)"
-        Write-Host "Admins Without MFA         : $($adminsWithoutMfa.Count)"
-        Write-Host "Passwordless Capable       : $($passwordlessUsers.Count)"
-        Write-Host "Without Passwordless       : $($usersWithoutPasswordless.Count)"
-        Write-Host "Without SSPR               : $($usersWithoutSspr.Count)"
-        Write-Host "Attention Required         : $($attentionRequired.Count)"
+        Write-Host "Users Without MFA             : $($usersWithoutMfa.Count)"
+        Write-Host "Admins Without MFA            : $($adminsWithoutMfa.Count)"
+        Write-Host "Privileged Without MFA        : $($privilegedUsersWithoutMfa.Count)"
+        Write-Host "Passwordless Capable          : $($passwordlessUsers.Count)"
+        Write-Host "Without Passwordless          : $($usersWithoutPasswordless.Count)"
+        Write-Host "Without SSPR                  : $($usersWithoutSspr.Count)"
+        Write-Host "Attention Required            : $($attentionRequired.Count)"
 
         Write-Host ""
-        Write-Host "Correlation Confidence     : $score%" -ForegroundColor Green
-        Write-Host "Correlation Health         : $health"
+        Write-Host "Authorization Correlation"
+        Write-Host "----------------------------------------"
+        Write-Host "Active Role Assignments       : $($directoryRoles.Count)"
+        Write-Host "User Role Assignments         : $($userRoleAssignments.Count)"
+        Write-Host "Group Role Assignments        : $($groupRoleAssignments.Count)"
+        Write-Host "Service Principal Assignments : $($servicePrincipalRoleAssignments.Count)"
+        Write-Host "Deprecated Role Assignments   : $($deprecatedRoleAssignments.Count)"
+        Write-Host "Assignments Requiring Review  : $($roleAssignmentsRequiringReview.Count)"
+        Write-Host "High-Severity Findings        : $($highSeverityAuthorizationFindings.Count)"
+        Write-Host "Medium-Severity Findings      : $($mediumSeverityAuthorizationFindings.Count)"
+
+        Write-Host ""
+        Write-Host "Correlation Controls"
+        Write-Host "----------------------------------------"
+
+        $checks |
+            Format-Table `
+                Name,
+                Status,
+                Points,
+                MaximumPoints,
+                Details `
+                -AutoSize
+
+        Write-Host ""
+        Write-Host "Correlation Confidence        : $score%" -ForegroundColor Green
+        Write-Host "Correlation Health            : $health"
+        Write-Host "Passed                        : $passed"
+        Write-Host "Warnings                      : $warnings"
+        Write-Host "Failed                        : $failed"
 
         if ($attentionRequired.Count -gt 0) {
             Write-Host ""
@@ -249,13 +538,33 @@ function Invoke-BKCorrelation {
                 Select-Object `
                     DisplayName,
                     UserPrincipalName,
-                    IsAdmin,
+                    IsPrivileged,
                     IsMfaRegistered,
                     IsPasswordlessCapable,
                     @{
                         Name = "Reasons"
                         Expression = {
                             @($_.AttentionReasons) -join "; "
+                        }
+                    } |
+                Format-Table -AutoSize
+        }
+
+        if ($roleAssignmentsRequiringReview.Count -gt 0) {
+            Write-Host ""
+            Write-Host "Authorization Assignments Requiring Review" -ForegroundColor Yellow
+            Write-Host "----------------------------------------"
+
+            $roleAssignmentsRequiringReview |
+                Select-Object `
+                    RoleName,
+                    PrincipalName,
+                    PrincipalType,
+                    Severity,
+                    @{
+                        Name = "ReviewReasons"
+                        Expression = {
+                            @($_.ReviewReasons) -join "; "
                         }
                     } |
                 Format-Table -AutoSize
@@ -280,34 +589,60 @@ function Invoke-BKCorrelation {
             }
 
             $report = [PSCustomObject]@{
-                Platform = "Blackknight One"
-                Version = "0.5.0-alpha"
-                GeneratedAt = (Get-Date).
-                    ToUniversalTime().
-                    ToString("o")
+                Platform    = "Blackknight One"
+                Version     = "0.5.0-alpha"
+                GeneratedAt = (
+                    Get-Date
+                ).ToUniversalTime().ToString("o")
+
                 Result = $result
+                Checks = $checks
+
                 Summary = [PSCustomObject]@{
-                    TotalIdentities = $totalUsers
-                    EnabledIdentities = $enabledUsers.Count
-                    DisabledIdentities = $disabledUsers.Count
-                    AdministrativeIdentities =
-                        $administrativeUsers.Count
-                    CorrelationCoverage =
-                        $correlationCoverage
-                    UsersWithoutMfa =
-                        $usersWithoutMfa.Count
-                    AdminsWithoutMfa =
-                        $adminsWithoutMfa.Count
-                    PasswordlessCapable =
-                        $passwordlessUsers.Count
-                    UsersWithoutPasswordless =
-                        $usersWithoutPasswordless.Count
-                    UsersWithoutSspr =
-                        $usersWithoutSspr.Count
-                    AttentionRequired =
-                        $attentionRequired.Count
+                    TotalIdentities          = $totalUsers
+                    EnabledIdentities        = $enabledUsers.Count
+                    DisabledIdentities       = $disabledUsers.Count
+                    AdministrativeIdentities = $administrativeUsers.Count
+                    PrivilegedUsers          = $privilegedUsers.Count
+
+                    CorrelationCoverage = $correlationCoverage
+
+                    UsersWithoutMfa            = $usersWithoutMfa.Count
+                    AdminsWithoutMfa            = $adminsWithoutMfa.Count
+                    PrivilegedUsersWithoutMfa  = $privilegedUsersWithoutMfa.Count
+                    PasswordlessCapable        = $passwordlessUsers.Count
+                    UsersWithoutPasswordless   = $usersWithoutPasswordless.Count
+                    UsersWithoutSspr           = $usersWithoutSspr.Count
+                    AttentionRequired          = $attentionRequired.Count
+
+                    ActiveRoleAssignments =
+                        $directoryRoles.Count
+
+                    UserRoleAssignments =
+                        $userRoleAssignments.Count
+
+                    GroupRoleAssignments =
+                        $groupRoleAssignments.Count
+
+                    ServicePrincipalRoleAssignments =
+                        $servicePrincipalRoleAssignments.Count
+
+                    DeprecatedRoleAssignments =
+                        $deprecatedRoleAssignments.Count
+
+                    RoleAssignmentsRequiringReview =
+                        $roleAssignmentsRequiringReview.Count
+
+                    HighSeverityAuthorizationFindings =
+                        $highSeverityAuthorizationFindings.Count
+
+                    MediumSeverityAuthorizationFindings =
+                        $mediumSeverityAuthorizationFindings.Count
                 }
+
                 Identities = $identities
+
+                DirectoryRoleAssignments = $directoryRoles
             }
 
             $jsonPath = Join-Path `
@@ -320,6 +655,8 @@ function Invoke-BKCorrelation {
         }
 
         Write-BKCorrelationSection "Correlation Engine Complete"
+
+        return $result
     }
     catch {
         Write-BKLog -Message $_.Exception.Message -Level Error
