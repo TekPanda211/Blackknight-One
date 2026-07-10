@@ -177,6 +177,14 @@
       "RequiresGraph": false,
       "RequiredScopes": [],
       "Description": "Builds normalized dashboard data from platform registries and current engine reports."
+    },
+    {
+      "Name": "Show-BKDashboard",
+      "Category": "Presentation",
+      "Status": "Integrated",
+      "RequiresGraph": false,
+      "RequiredScopes": [],
+      "Description": "Displays the Blackknight One operational dashboard."
 }
   ]
 }

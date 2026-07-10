@@ -165,9 +165,18 @@ function Invoke-BKIdentityDiscovery {
     }
 
     if ($ExportJson) {
-        $jsonPath = Join-Path $OutputPath "identity-discovery.json"
-        Export-BKJsonReport -Data $result -Path $jsonPath
+    $jsonPath = Join-Path $OutputPath "identity-discovery.json"
+
+    $report = [PSCustomObject]@{
+        Platform    = "Blackknight One"
+        Version     = "0.5.0-alpha"
+        GeneratedAt = (Get-Date).ToUniversalTime().ToString("o")
+        Tenant      = $tenant
+        Result      = $result
     }
+
+    Export-BKJsonReport -Data $report -Path $jsonPath
+}
 
     Write-BKSection "Identity Discovery Complete"
 }

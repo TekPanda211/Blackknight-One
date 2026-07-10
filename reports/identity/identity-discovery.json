@@ -1,26 +1,46 @@
 {
-  "Engine": "Identity Discovery",
-  "Version": "0.4.0-alpha",
-  "Status": "Integrated",
-  "Health": "Healthy",
-  "Confidence": 85,
-  "ChecksRun": 10,
-  "Passed": 8,
-  "Warnings": 2,
-  "Failed": 0,
-  "Timestamp": "2026-07-10T14:26:05.3064129Z",
-  "Evidence": [
-    "Tenant discovered",
-    "Verified domain exists",
-    "Users discovered",
-    "Groups discovered",
-    "No disabled users detected",
-    "Guest user ratio is within threshold",
-    "License inventory available",
-    "Security groups discovered",
-    "Recommendations generated"
-  ],
-  "Recommendations": [
-    "No role-assignable groups detected. Validate privileged access design and PIM readiness."
-  ]
+  "Platform": "Blackknight One",
+  "Version": "0.5.0-alpha",
+  "GeneratedAt": "2026-07-10T14:50:30.8733065Z",
+  "Tenant": {
+    "TenantName": "BlackKnight Networking",
+    "TenantId": "5e0e3977-d571-4ae6-9a65-1f967968ee9a",
+    "VerifiedDomains": 2,
+    "InitialDomain": "BlackKnightNetworking.onmicrosoft.com",
+    "TotalUsers": 10,
+    "EnabledUsers": 10,
+    "DisabledUsers": 0,
+    "GuestUsers": 1,
+    "TotalGroups": 35,
+    "SecurityGroups": 34,
+    "RoleAssignableGroups": 0,
+    "SubscribedSkus": 4,
+    "Timestamp": "2026-07-10T14:50:30.8667824Z"
+  },
+  "Result": {
+    "Engine": "Identity Discovery",
+    "Version": "0.4.0-alpha",
+    "Status": "Integrated",
+    "Health": "Healthy",
+    "Confidence": 85,
+    "ChecksRun": 10,
+    "Passed": 8,
+    "Warnings": 2,
+    "Failed": 0,
+    "Timestamp": "2026-07-10T14:50:30.8670596Z",
+    "Evidence": [
+      "Tenant discovered",
+      "Verified domain exists",
+      "Users discovered",
+      "Groups discovered",
+      "No disabled users detected",
+      "Guest user ratio is within threshold",
+      "License inventory available",
+      "Security groups discovered",
+      "Recommendations generated"
+    ],
+    "Recommendations": [
+      "No role-assignable groups detected. Validate privileged access design and PIM readiness."
+    ]
+  }
 }
