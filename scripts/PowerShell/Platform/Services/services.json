@@ -242,6 +242,17 @@
       "RequiredScopes": [],
       "Description": "Displays the Blackknight One operational dashboard."
     },
+{
+  "Name": "Find-BKDirectoryRoleAssignment",
+  "Category": "Authorization",
+  "Status": "Integrated",
+  "RequiresGraph": true,
+  "RequiredScopes": [
+    "RoleManagement.Read.Directory",
+    "Directory.Read.All"
+  ],
+  "Description": "Searches active Microsoft Entra directory-role assignments by role, principal, principal type, severity, deprecation, review status, and assignment scope."
+},
     {
       "Name": "Find-BKIdentity",
       "Category": "Correlation",
