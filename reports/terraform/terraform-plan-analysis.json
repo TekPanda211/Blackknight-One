@@ -1,0 +1,31 @@
+{
+  "Platform": "Blackknight One",
+  "Engine": "Terraform",
+  "Operation": "PlanAnalysis",
+  "GeneratedAt": "2026-07-11T18:03:00.1237913Z",
+  "Project": {
+    "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform",
+    "PlanFile": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\.bk-terraform-plan.tfplan",
+    "VariableFile": "",
+    "Refresh": true,
+    "DestroyPlan": false
+  },
+  "Summary": {
+    "TotalChanges": 0,
+    "Creates": 0,
+    "Updates": 0,
+    "Deletes": 0,
+    "Replacements": 0,
+    "Critical": 0,
+    "High": 0,
+    "Medium": 0,
+    "Low": 0,
+    "SensitiveChanges": 0,
+    "Confidence": 100.0,
+    "Health": "Excellent"
+  },
+  "Changes": [],
+  "Recommendations": [
+    "Terraform reported no infrastructure changes."
+  ]
+}

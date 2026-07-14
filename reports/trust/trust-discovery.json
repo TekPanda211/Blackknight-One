@@ -1,7 +1,7 @@
 {
   "Platform": "Blackknight One",
   "Version": "0.5.0-alpha",
-  "GeneratedAt": "2026-07-10T15:23:28.6382689Z",
+  "GeneratedAt": "2026-07-14T14:46:31.7113647Z",
   "Result": {
     "Engine": "Trust Engine",
     "Version": "0.5.0-alpha",
@@ -12,7 +12,7 @@
     "Passed": 6,
     "Warnings": 3,
     "Failed": 1,
-    "Timestamp": "2026-07-10T15:23:28.6232898Z",
+    "Timestamp": "2026-07-14T14:46:31.6928130Z",
     "Evidence": [
       "Conditional Access policies: 6",
       "Enabled Conditional Access policies: 4",
@@ -21,15 +21,15 @@
       "Named locations: 1",
       "MFA registration: 70%",
       "Administrative users without MFA: 0",
-      "Passwordless capability: 0%",
-      "SSPR registration: 60%",
+      "Passwordless capability: 20%",
+      "SSPR registration: 50%",
       "System-preferred authentication: 100%"
     ],
     "Recommendations": [
       "Review report-only results and either enable or retire those policies.",
       "Prioritize MFA registration for unregistered users.",
-      "Evaluate FIDO2, Windows Hello for Business, passkeys, and Temporary Access Pass.",
-      "Increase SSPR registration and capability coverage."
+      "Create a phased passwordless deployment plan.",
+      "Deploy and promote self-service password reset registration."
     ]
   },
   "Checks": [
@@ -83,19 +83,19 @@
     },
     {
       "Name": "Passwordless Readiness",
-      "Status": "FAIL",
-      "Points": 0,
-      "MaximumPoints": 10,
-      "Details": "No users are currently passwordless capable.",
-      "Recommendation": "Evaluate FIDO2, Windows Hello for Business, passkeys, and Temporary Access Pass."
-    },
-    {
-      "Name": "SSPR Registration",
       "Status": "WARN",
       "Points": 5,
       "MaximumPoints": 10,
-      "Details": "60% of users are registered for SSPR.",
-      "Recommendation": "Increase SSPR registration and capability coverage."
+      "Details": "20% of users are passwordless capable.",
+      "Recommendation": "Create a phased passwordless deployment plan."
+    },
+    {
+      "Name": "SSPR Registration",
+      "Status": "FAIL",
+      "Points": 0,
+      "MaximumPoints": 10,
+      "Details": "50% of users are registered for SSPR.",
+      "Recommendation": "Deploy and promote self-service password reset registration."
     },
     {
       "Name": "System-Preferred Authentication",
@@ -126,7 +126,7 @@
         "State": "enabledForReportingButNotEnforced",
         "CreatedDateTime": "2026-07-09T18:46:10.6872417Z",
         "ModifiedDateTime": null,
-        "Timestamp": "2026-07-10T15:23:27.8671537Z"
+        "Timestamp": "2026-07-14T14:46:27.9914018Z"
       },
       {
         "Id": "f77e0bde-9f40-45c3-83c6-393e8e27278c",
@@ -134,7 +134,7 @@
         "State": "enabledForReportingButNotEnforced",
         "CreatedDateTime": "2026-07-09T18:52:37.1960658Z",
         "ModifiedDateTime": null,
-        "Timestamp": "2026-07-10T15:23:27.8672735Z"
+        "Timestamp": "2026-07-14T14:46:27.9923392Z"
       },
       {
         "Id": "97654841-7af2-4ef6-b677-f6108996e908",
@@ -142,7 +142,7 @@
         "State": "enabled",
         "CreatedDateTime": "2026-07-09T18:53:25.2447651Z",
         "ModifiedDateTime": null,
-        "Timestamp": "2026-07-10T15:23:27.8673227Z"
+        "Timestamp": "2026-07-14T14:46:27.9923882Z"
       },
       {
         "Id": "2e354020-e429-439d-901f-3bc0b88c686e",
@@ -150,7 +150,7 @@
         "State": "enabled",
         "CreatedDateTime": "2026-07-09T18:53:26.223732Z",
         "ModifiedDateTime": null,
-        "Timestamp": "2026-07-10T15:23:27.8673682Z"
+        "Timestamp": "2026-07-14T14:46:27.9924063Z"
       },
       {
         "Id": "3781edf6-0918-4afa-885c-28a855e67f93",
@@ -158,7 +158,7 @@
         "State": "enabled",
         "CreatedDateTime": "2026-07-09T18:53:27.3584769Z",
         "ModifiedDateTime": null,
-        "Timestamp": "2026-07-10T15:23:27.8674061Z"
+        "Timestamp": "2026-07-14T14:46:27.9924201Z"
       },
       {
         "Id": "55982dde-e34b-455b-a6c2-964fcd063f65",
@@ -166,7 +166,7 @@
         "State": "enabled",
         "CreatedDateTime": "2026-07-09T18:53:28.3070425Z",
         "ModifiedDateTime": null,
-        "Timestamp": "2026-07-10T15:23:27.8674439Z"
+        "Timestamp": "2026-07-14T14:46:27.9924331Z"
       }
     ]
   },
@@ -177,7 +177,7 @@
       "CreatedDate": "2026-07-09T18:51:39.8079353Z",
       "ModifiedDate": "2026-07-09T18:51:39.8079353Z",
       "Type": "#microsoft.graph.countryNamedLocation",
-      "Timestamp": "2026-07-10T15:23:28.4065853Z"
+      "Timestamp": "2026-07-14T14:46:28.5712994Z"
     }
   ],
   "Authentication": {
@@ -189,10 +189,10 @@
     "MfaRegisteredPercent": 70.0,
     "MfaCapable": 7,
     "MfaCapablePercent": 70.0,
-    "PasswordlessCapable": 0,
-    "PasswordlessCapablePercent": 0.0,
-    "SsprRegistered": 6,
-    "SsprRegisteredPercent": 60.0,
+    "PasswordlessCapable": 2,
+    "PasswordlessCapablePercent": 20.0,
+    "SsprRegistered": 5,
+    "SsprRegisteredPercent": 50.0,
     "SsprCapable": 3,
     "SsprCapablePercent": 30.0,
     "SsprEnabled": 3,
@@ -201,7 +201,7 @@
     "SystemPreferredEnabledPercent": 100.0,
     "UsersWithoutMfa": 3,
     "AdminsWithoutMfa": 0,
-    "UsersWithoutPasswordless": 10,
+    "UsersWithoutPasswordless": 8,
     "RegisteredMethods": [
       {
         "Method": "softwareOneTimePasscode",
@@ -209,14 +209,24 @@
         "Percent": 70.0
       },
       {
+        "Method": "microsoftAuthenticatorPush",
+        "Count": 4,
+        "Percent": 40.0
+      },
+      {
         "Method": "mobilePhone",
         "Count": 3,
         "Percent": 30.0
       },
       {
-        "Method": "microsoftAuthenticatorPush",
-        "Count": 3,
-        "Percent": 30.0
+        "Method": "microsoftAuthenticatorPasswordless",
+        "Count": 2,
+        "Percent": 20.0
+      },
+      {
+        "Method": "passKeyDeviceBoundAuthenticator",
+        "Count": 2,
+        "Percent": 20.0
       }
     ],
     "PreferredSecondaryMethods": [
@@ -239,15 +249,20 @@
     "SystemPreferredAuthenticationMethods": [
       {
         "Method": "SoftwareOTP",
-        "Count": 4,
-        "Percent": 40.0
+        "Count": 3,
+        "Percent": 30.0
       },
       {
         "Method": "PhoneAppNotification",
-        "Count": 3,
-        "Percent": 30.0
+        "Count": 2,
+        "Percent": 20.0
+      },
+      {
+        "Method": "Fido2",
+        "Count": 2,
+        "Percent": 20.0
       }
     ],
-    "Timestamp": "2026-07-10T15:23:28.6213890Z"
+    "Timestamp": "2026-07-14T14:46:31.5678359Z"
   }
 }

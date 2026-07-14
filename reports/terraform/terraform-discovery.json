@@ -1,0 +1,328 @@
+{
+  "Platform": "Blackknight One",
+  "Engine": {
+    "Name": "Terraform",
+    "DisplayName": "Terraform Engineering Engine",
+    "Version": "0.6.0-alpha",
+    "Status": "Needs Attention"
+  },
+  "Summary": {
+    "RootPath": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform",
+    "TerraformInstalled": true,
+    "TerraformVersion": "1.15.7",
+    "ProjectCount": 1,
+    "TerraformFileCount": 10,
+    "ProviderCount": 1,
+    "RequiredProviderCount": 1,
+    "ResourceCount": 2,
+    "DataSourceCount": 1,
+    "ModuleCount": 0,
+    "VariableCount": 2,
+    "OutputCount": 2,
+    "BackendCount": 0,
+    "LockFileCount": 1,
+    "StateFileCount": 2
+  },
+  "Confidence": {
+    "Score": 72.22,
+    "Health": "Needs Attention",
+    "Points": 65.0,
+    "MaximumPoints": 90.0,
+    "Passed": 6,
+    "Warnings": 1,
+    "Failed": 1
+  },
+  "Controls": [
+    {
+      "Name": "Terraform CLI",
+      "Status": "PASS",
+      "Points": 10,
+      "MaximumPoints": 10,
+      "Details": "Terraform CLI version 1.15.7 is available."
+    },
+    {
+      "Name": "Terraform Configuration",
+      "Status": "PASS",
+      "Points": 10,
+      "MaximumPoints": 10,
+      "Details": "10 Terraform files were discovered."
+    },
+    {
+      "Name": "Terraform Projects",
+      "Status": "PASS",
+      "Points": 10,
+      "MaximumPoints": 10,
+      "Details": "1 Terraform project folders were discovered."
+    },
+    {
+      "Name": "Provider Discovery",
+      "Status": "PASS",
+      "Points": 10,
+      "MaximumPoints": 10,
+      "Details": "1 required provider declarations and 1 provider blocks were discovered."
+    },
+    {
+      "Name": "Resource Inventory",
+      "Status": "PASS",
+      "Points": 10,
+      "MaximumPoints": 10,
+      "Details": "2 managed resources were discovered."
+    },
+    {
+      "Name": "Terraform State Hygiene",
+      "Status": "FAIL",
+      "Points": 0,
+      "MaximumPoints": 20,
+      "Details": "2 local Terraform state files were discovered."
+    },
+    {
+      "Name": "Backend Configuration",
+      "Status": "WARN",
+      "Points": 5,
+      "MaximumPoints": 10,
+      "Details": "No explicit Terraform backend declaration was discovered."
+    },
+    {
+      "Name": "Provider Dependency Lock",
+      "Status": "PASS",
+      "Points": 10,
+      "MaximumPoints": 10,
+      "Details": "1 Terraform dependency lock files were discovered."
+    }
+  ],
+  "Recommendations": [
+    "Evaluate a secured remote backend for shared or production Terraform workloads.",
+    "Remove Terraform state files from source control and use a secured remote backend."
+  ],
+  "Inventory": {
+    "RootPath": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform",
+    "TerraformInstalled": true,
+    "TerraformVersion": "1.15.7",
+    "TerraformExecutable": "C:\\Users\\ToddCrow\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Hashicorp.Terraform_Microsoft.Winget.Source_8wekyb3d8bbwe\\terraform.exe",
+    "ProjectCount": 1,
+    "ProjectFolders": [
+      "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform"
+    ],
+    "TerraformFileCount": 10,
+    "VariableFileCount": 1,
+    "LockFileCount": 1,
+    "StateFileCount": 2,
+    "ContainsLocalState": true,
+    "ProviderCount": 1,
+    "Providers": [
+      "azuread"
+    ],
+    "RequiredProviderCount": 1,
+    "RequiredProviders": [
+      {
+        "Name": "azuread",
+        "Source": "hashicorp/azuread",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\versions.tf"
+      }
+    ],
+    "ResourceCount": 2,
+    "ResourceTypes": [
+      {
+        "Type": "azuread_group",
+        "Count": 2
+      }
+    ],
+    "Resources": [
+      {
+        "Type": "azuread_group",
+        "Name": "department_groups",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\groups.tf"
+      },
+      {
+        "Type": "azuread_group",
+        "Name": "role_assignable_groups",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\role-assignable-groups.tf"
+      }
+    ],
+    "DataSourceCount": 1,
+    "DataSources": [
+      {
+        "Type": "azuread_client_config",
+        "Name": "current",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\data.tf"
+      }
+    ],
+    "ModuleCount": 0,
+    "Modules": [],
+    "VariableCount": 2,
+    "Variables": [
+      {
+        "Name": "company_prefix",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\variables.tf"
+      },
+      {
+        "Name": "environment",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\variables.tf"
+      }
+    ],
+    "OutputCount": 2,
+    "Outputs": [
+      {
+        "Name": "tenant_id",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\outputs.tf"
+      },
+      {
+        "Name": "created_groups",
+        "File": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\outputs.tf"
+      }
+    ],
+    "BackendCount": 0,
+    "Backends": [],
+    "TerraformBlockCount": 1,
+    "WarningCount": 1,
+    "Warnings": [
+      "Terraform state files were discovered under the scanned path."
+    ],
+    "Files": [
+      {
+        "Name": "access-packages.tf",
+        "RelativePath": "access-packages.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\access-packages.tf",
+        "SizeBytes": 3104,
+        "LastWriteTimeUtc": "2026-07-08T14:30:52.3618923Z",
+        "Providers": [],
+        "ResourceCount": 0,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "data.tf",
+        "RelativePath": "data.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\data.tf",
+        "SizeBytes": 41,
+        "LastWriteTimeUtc": "2026-07-07T20:21:06.0721004Z",
+        "Providers": [],
+        "ResourceCount": 0,
+        "DataSourceCount": 1,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "groups.tf",
+        "RelativePath": "groups.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\groups.tf",
+        "SizeBytes": 512,
+        "LastWriteTimeUtc": "2026-07-07T23:01:09.3461003Z",
+        "Providers": [],
+        "ResourceCount": 1,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "locals.tf",
+        "RelativePath": "locals.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\locals.tf",
+        "SizeBytes": 413,
+        "LastWriteTimeUtc": "2026-07-07T22:27:11.8994342Z",
+        "Providers": [],
+        "ResourceCount": 0,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "main.tf",
+        "RelativePath": "main.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\main.tf",
+        "SizeBytes": 91,
+        "LastWriteTimeUtc": "2026-07-07T20:28:25.4939961Z",
+        "Providers": [],
+        "ResourceCount": 0,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "outputs.tf",
+        "RelativePath": "outputs.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\outputs.tf",
+        "SizeBytes": 200,
+        "LastWriteTimeUtc": "2026-07-07T20:27:45.6623307Z",
+        "Providers": [],
+        "ResourceCount": 0,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 2,
+        "BackendCount": 0
+      },
+      {
+        "Name": "providers.tf",
+        "RelativePath": "providers.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\providers.tf",
+        "SizeBytes": 21,
+        "LastWriteTimeUtc": "2026-07-07T20:20:38.3389284Z",
+        "Providers": [
+          "azuread"
+        ],
+        "ResourceCount": 0,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "role-assignable-groups.tf",
+        "RelativePath": "role-assignable-groups.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\role-assignable-groups.tf",
+        "SizeBytes": 363,
+        "LastWriteTimeUtc": "2026-07-07T23:09:50.0267046Z",
+        "Providers": [],
+        "ResourceCount": 1,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "variables.tf",
+        "RelativePath": "variables.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\variables.tf",
+        "SizeBytes": 402,
+        "LastWriteTimeUtc": "2026-07-07T22:24:34.7366578Z",
+        "Providers": [],
+        "ResourceCount": 0,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 2,
+        "OutputCount": 0,
+        "BackendCount": 0
+      },
+      {
+        "Name": "versions.tf",
+        "RelativePath": "versions.tf",
+        "FullName": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\versions.tf",
+        "SizeBytes": 163,
+        "LastWriteTimeUtc": "2026-07-07T20:20:11.1114647Z",
+        "Providers": [],
+        "ResourceCount": 0,
+        "DataSourceCount": 0,
+        "ModuleCount": 0,
+        "VariableCount": 0,
+        "OutputCount": 0,
+        "BackendCount": 0
+      }
+    ],
+    "Timestamp": "2026-07-11T16:27:40.6741560Z"
+  },
+  "Timestamp": "2026-07-11T16:27:40.6978586Z"
+}

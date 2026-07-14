@@ -1,0 +1,47 @@
+{
+  "Name": "Terraform",
+  "DisplayName": "Terraform Engineering Engine",
+  "Version": "0.6.0-alpha",
+  "Status": "Integrated",
+  "Enabled": true,
+  "Category": "InfrastructureAsCode",
+  "EntryPoint": "Invoke-BKTerraformAssessment.ps1",
+  "PublicCommand": "Invoke-BKTerraformAssessment",
+  "ProducesReport": true,
+  "ReportName": "terraform-assessment.json",
+  "ReportPath": "reports/terraform",
+  "ConfidenceModel": true,
+  "RequiresGraph": false,
+  "Dependencies": [
+    "Get-BKTerraformInventory",
+    "Test-BKTerraformConfiguration",
+    "Test-BKTerraformPlan",
+    "Test-BKTerraformDrift"
+  ],
+  "Capabilities": [
+    "Terraform CLI Discovery",
+    "Terraform Project Inventory",
+    "Provider Discovery",
+    "Resource Discovery",
+    "Module Discovery",
+    "Variable Discovery",
+    "Output Discovery",
+    "Backend Discovery",
+    "Terraform State Hygiene",
+    "Terraform Formatting Validation",
+    "Terraform Initialization",
+    "Terraform Configuration Validation",
+    "Terraform Plan Analysis",
+    "Terraform Drift Detection",
+    "Terraform Confidence Scoring",
+    "Terraform Release Decision"
+  ],
+  "EngineeringPillars": [
+    "Discover",
+    "Correlate",
+    "Validate",
+    "Understand",
+    "Automate"
+  ],
+  "Description": "Inventories, validates, analyzes, and scores Terraform configurations as a first-class Blackknight One enterprise identity engineering capability."
+}

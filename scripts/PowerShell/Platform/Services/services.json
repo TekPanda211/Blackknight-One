@@ -13,6 +13,14 @@
       "Description": "Connects Blackknight One to Microsoft Graph."
     },
     {
+      "Name": "Get-BKTerraformInventory",
+      "Category": "Terraform",
+      "Status": "Integrated",
+      "RequiresGraph": false,
+      "RequiredScopes": [],
+      "Description": "Inventories Terraform projects, providers, resources, modules, variables, outputs, backends, state files, and CLI readiness."
+    },
+    {
       "Name": "Get-BKOrganization",
       "Category": "Discovery",
       "Status": "Integrated",
@@ -57,6 +65,14 @@
       "Description": "Collects Microsoft Entra group inventory."
     },
     {
+      "Name": "Test-BKTerraformConfiguration",
+      "Category": "Terraform",
+      "Status": "Integrated",
+      "RequiresGraph": false,
+      "RequiredScopes": [],
+      "Description": "Runs Terraform formatting, backend-free initialization, JSON validation, diagnostic normalization, and confidence scoring."
+    },
+    {
       "Name": "Get-BKLicensing",
       "Category": "Discovery",
       "Status": "Integrated",
@@ -66,6 +82,14 @@
         "Directory.Read.All"
       ],
       "Description": "Collects Microsoft 365 subscribed SKU information."
+    },
+    {
+      "Name": "Test-BKTerraformPlan",
+      "Category": "Terraform",
+      "Status": "Integrated",
+      "RequiresGraph": false,
+      "RequiredScopes": [],
+      "Description": "Creates and analyzes Terraform execution plans, classifies proposed resource changes, identifies destructive and sensitive            operations, and calculates plan confidence."
     },
     {
       "Name": "Get-BKTenant",

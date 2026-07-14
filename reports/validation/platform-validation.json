@@ -1,0 +1,1698 @@
+{
+  "Platform": "Blackknight One",
+  "Version": "0.4.0-alpha",
+  "GeneratedAt": "2026-07-11T13:44:07.8312181Z",
+  "Health": "Failed",
+  "Confidence": 92.78,
+  "Summary": {
+    "Total": 187,
+    "Passed": 163,
+    "Warnings": 21,
+    "Failed": 3
+  },
+  "Results": [
+    {
+      "Category": "Repository",
+      "Check": "Platform Module",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Blackknight-Platform.psm1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1113371Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "Core Engine",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Core\\Invoke-BlackKnight.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1116667Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "PowerShell Root",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1141304Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "Public Services Folder",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1206657Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "Configuration Folder",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\config",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1240012Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "Reports Folder",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\reports",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1254753Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "Documentation Folder",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1268868Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "Schema Folder",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\schemas",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1283257Z"
+    },
+    {
+      "Category": "Repository",
+      "Check": "Terraform Folder",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1297560Z"
+    },
+    {
+      "Category": "Registry",
+      "Check": "Service Manifest JSON",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1308128Z"
+    },
+    {
+      "Category": "Registry",
+      "Check": "Registered Services",
+      "Status": "PASS",
+      "Details": "30 services registered.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1309311Z"
+    },
+    {
+      "Category": "Registry",
+      "Check": "Duplicate Services",
+      "Status": "PASS",
+      "Details": "No duplicate service registrations detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1314243Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Connect-BKGraph",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1316056Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Connect-BKGraph",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1316641Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKTerraformInventory",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1317311Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKTerraformInventory",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1317638Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKOrganization",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1318212Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKOrganization",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1318553Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKDomains",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1319136Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKDomains",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1319494Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKUsers",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1320054Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKUsers",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1320391Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKGroups",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1320948Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKGroups",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1321306Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKLicensing",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1321877Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKLicensing",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1322227Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKTenant",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1322887Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKTenant",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1323360Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKConditionalAccessPolicies",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1324059Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKConditionalAccessPolicies",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1324476Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKNamedLocations",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1325053Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKNamedLocations",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1325384Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKAuthenticationMethodsSummary",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1325961Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKAuthenticationMethodsSummary",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1326287Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKDirectoryRoles",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1326840Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKDirectoryRoles",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1327166Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKIdentityGraph",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1327712Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKIdentityGraph",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1328039Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: New-BKResult",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1328585Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: New-BKResult",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1328908Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKConfidenceScore",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1329631Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKConfidenceScore",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1330007Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Export-BKJsonReport",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1330587Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Export-BKJsonReport",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1330912Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKDashboardData",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1331484Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKDashboardData",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1331832Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Write-BKLog",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1332379Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Write-BKLog",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1332696Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Test-BKPlatform",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1333251Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Test-BKPlatform",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1333575Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKServiceManifest",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1334161Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKServiceManifest",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1334577Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKPlatformConfiguration",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1360296Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKPlatformConfiguration",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1361104Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKPlatformInventory",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1361801Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKPlatformInventory",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1362153Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKEngineManifest",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1362744Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKEngineManifest",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1363074Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKCapabilities",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1363641Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKCapabilities",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1364124Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Get-BKPlatform",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1364759Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Get-BKPlatform",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1365100Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Show-BKDashboard",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1365655Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Show-BKDashboard",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1365977Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Find-BKDirectoryRoleAssignment",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1366618Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Find-BKDirectoryRoleAssignment",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1366997Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Find-BKIdentity",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1367565Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Find-BKIdentity",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1367909Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Show-BKIdentity",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1371082Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Show-BKIdentity",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1372462Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Service Command: Show-BKAuthenticationMethodsSummary",
+      "Status": "PASS",
+      "Details": "Registered service command is available.",
+      "Path": "Blackknight-Platform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1374500Z"
+    },
+    {
+      "Category": "Services",
+      "Check": "Graph Scope Metadata: Show-BKAuthenticationMethodsSummary",
+      "Status": "PASS",
+      "Details": "Graph requirement metadata is internally consistent.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Services\\services.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1375413Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest Discovery",
+      "Status": "PASS",
+      "Details": "7 engine manifests discovered.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1479748Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest: Correlation",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1495638Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Entry Point: Correlation",
+      "Status": "PASS",
+      "Details": "Engine entry point is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\Invoke-BKCorrelation.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1498570Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Correlation -> Connect-BKGraph",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1499827Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Correlation -> Get-BKUsers",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1500512Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Correlation -> Get-BKDirectoryRoles",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1501373Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Correlation -> Get-BKIdentityGraph",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1502049Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Correlation -> New-BKResult",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1502617Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Correlation -> Export-BKJsonReport",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1503200Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest: Governance",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Governance\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1532910Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Entry Point: Governance",
+      "Status": "PASS",
+      "Details": "Engine entry point is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Governance\\Invoke-BlackKnightGovernance.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1541749Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Governance -> New-BKResult",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Governance\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1543543Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Governance -> Export-BKJsonReport",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Governance\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1544255Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest: Identity",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Identity\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1573516Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Entry Point: Identity",
+      "Status": "PASS",
+      "Details": "Engine entry point is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Identity\\Invoke-BKIdentityDiscovery.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1576187Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Identity -> Connect-BKGraph",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Identity\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1577547Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Identity -> Get-BKTenant",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Identity\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1578456Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest: Operations",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Operations\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1591640Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Entry Point: Operations",
+      "Status": "PASS",
+      "Details": "Engine entry point is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Operations\\Invoke-BlackKnightOperations.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1593619Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Operations -> New-BKResult",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Operations\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1594559Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Operations -> Export-BKJsonReport",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Operations\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1595212Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest: Terraform",
+      "Status": "FAIL",
+      "Details": "JSON file is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Terraform\\engine.json",
+      "Recommendation": "Populate the file with valid JSON.",
+      "Timestamp": "2026-07-11T13:44:07.1600549Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest: Trust",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1613103Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Entry Point: Trust",
+      "Status": "PASS",
+      "Details": "Engine entry point is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\Invoke-BKTrustDiscovery.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1615228Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Trust -> Connect-BKGraph",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1616184Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Trust -> Get-BKConditionalAccessPolicies",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1616872Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Trust -> Get-BKNamedLocations",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1617495Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Trust -> Get-BKAuthenticationMethodsSummary",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1618105Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Trust -> New-BKResult",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1618678Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Trust -> Export-BKJsonReport",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1619267Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Manifest: Validation",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Validation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1631331Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Engine Entry Point: Validation",
+      "Status": "PASS",
+      "Details": "Engine entry point is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Validation\\Invoke-BKValidation.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1633747Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Validation -> New-BKResult",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Validation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1634659Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Validation -> Export-BKJsonReport",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Validation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1635392Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Validation -> Get-BKEngineManifest",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Validation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1635995Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Dependency: Validation -> Get-BKServiceManifest",
+      "Status": "PASS",
+      "Details": "Engine dependency is available.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Validation\\engine.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1636670Z"
+    },
+    {
+      "Category": "Engines",
+      "Check": "Duplicate Engine Names",
+      "Status": "PASS",
+      "Details": "No duplicate engine names detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1638609Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "PowerShell File Discovery",
+      "Status": "PASS",
+      "Details": "41 PowerShell files discovered.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.1999652Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Invoke-BlackKnight.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Core\\Invoke-BlackKnight.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2037479Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Invoke-BKCorrelation.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Correlation\\Invoke-BKCorrelation.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2065662Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Invoke-BlackKnightGovernance.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Governance\\Invoke-BlackKnightGovernance.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2071140Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Invoke-BKIdentityDiscovery.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Identity\\Invoke-BKIdentityDiscovery.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2075918Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Invoke-BlackKnightOperations.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Operations\\Invoke-BlackKnightOperations.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2079515Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Connect-BKGraph.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Connect-BKGraph.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2082619Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Export-BKJsonReport.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Export-BKJsonReport.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2085362Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Find-BKDirectoryRoleAssignment.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Find-BKDirectoryRoleAssignment.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2089554Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Find-BKIdentity.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Find-BKIdentity.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2094077Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKAuthenticationMethodsSummary.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKAuthenticationMethodsSummary.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2099246Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKCapabilities.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKCapabilities.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2103120Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKConditionalAccessPolicies.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKConditionalAccessPolicies.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2109272Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKConfidenceScore.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKConfidenceScore.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2112382Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKConfiguration.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKConfiguration.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2114981Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKDashboardData.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKDashboardData.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2121852Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKDirectoryRoles.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKDirectoryRoles.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2127785Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKDomains.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKDomains.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2131181Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKEngineManifest.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKEngineManifest.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2134392Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKGroups.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKGroups.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2138143Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKIdentityGraph.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKIdentityGraph.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2143366Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKLicensing.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKLicensing.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2146387Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKNamedLocations.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKNamedLocations.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2149135Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKOrganization.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKOrganization.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2151860Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKPlatform.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKPlatform.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2154432Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKPlatformConfiguration.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKPlatformConfiguration.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2156945Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKPlatformInventory.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKPlatformInventory.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2160118Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKServiceManifest.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKServiceManifest.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2162547Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKTenant.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKTenant.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2165471Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKTerraformInventory.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKTerraformInventory.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2170984Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Get-BKUsers.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Get-BKUsers.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2174223Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: New-BKResult.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\New-BKResult.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2177100Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Show-BKAuthenticationMethodsSummary.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Show-BKAuthenticationMethodsSummary.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2221257Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Show-BKDashboard.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Show-BKDashboard.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2230650Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Show-BKIdentity.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Show-BKIdentity.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2237197Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Test-BKPlatform.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Test-BKPlatform.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2248150Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Write-BKLog.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Public\\Write-BKLog.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2252022Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Blackknight-Platform.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Blackknight-Platform.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2256160Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Blackknight-Platform.psm1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Platform\\Blackknight-Platform.psm1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2258952Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Empty Script: Invoke-BKTerraformDiscovery.ps1",
+      "Status": "WARN",
+      "Details": "PowerShell file is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Terraform\\Invoke-BKTerraformDiscovery.ps1",
+      "Recommendation": "Implement the script or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2259535Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Invoke-BKTrustDiscovery.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Trust\\Invoke-BKTrustDiscovery.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2266916Z"
+    },
+    {
+      "Category": "PowerShell",
+      "Check": "Syntax: Invoke-BKValidation.ps1",
+      "Status": "PASS",
+      "Details": "No PowerShell parser errors detected.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\scripts\\PowerShell\\Validation\\Invoke-BKValidation.ps1",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2273049Z"
+    },
+    {
+      "Category": "JSON",
+      "Check": "JSON Syntax: engines.json",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\config\\engines.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2336480Z"
+    },
+    {
+      "Category": "JSON",
+      "Check": "JSON Syntax: platform.json",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\config\\platform.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2342956Z"
+    },
+    {
+      "Category": "JSON",
+      "Check": "JSON Syntax: blackknight-result.schema.json",
+      "Status": "PASS",
+      "Details": "JSON document is valid.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\schemas\\blackknight-result.schema.json",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2376125Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Markdown Documentation",
+      "Status": "PASS",
+      "Details": "40 Markdown documents discovered.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2429576Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Authorization-Concepts.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Concepts\\Authorization-Concepts.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2432065Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: CI-CD-Concepts.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Concepts\\CI-CD-Concepts.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2432485Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Confidence-Model.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Concepts\\Confidence-Model.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2433754Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: GDAP-Concepts.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Concepts\\GDAP-Concepts.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2434378Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Identity-Graph-Concepts.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Concepts\\Identity-Graph-Concepts.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2434872Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Terraform-Concepts.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Concepts\\Terraform-Concepts.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2435374Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Zero-Trust-Concepts.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Concepts\\Zero-Trust-Concepts.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2435832Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Correlation-Engine.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Engines\\Correlation-Engine.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2436249Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Governance-Engine.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Engines\\Governance-Engine.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2436598Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Identity-Engine.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Engines\\Identity-Engine.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2436946Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Operations-Engine.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Engines\\Operations-Engine.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2437295Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Terraform-Engine.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Engines\\Terraform-Engine.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2437643Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Trust-Engine.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Engines\\Trust-Engine.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2437999Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Validation-Engine.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Engines\\Validation-Engine.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2438350Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Find-MFA-Gaps.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Examples\\Find-MFA-Gaps.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2438693Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Investigate-User.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Examples\\Investigate-User.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2439042Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Review-Admins.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Examples\\Review-Admins.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2439387Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Security-Review.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Examples\\Security-Review.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2439746Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Tenant-Assessment.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Examples\\Tenant-Assessment.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2440089Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Empty Document: Roadmap.md",
+      "Status": "WARN",
+      "Details": "Markdown document is empty.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Operate\\Roadmap\\Roadmap.md",
+      "Recommendation": "Add documentation or remove the placeholder.",
+      "Timestamp": "2026-07-11T13:44:07.2440426Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: README.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\README.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2447480Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: docs\\README.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\README.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2453300Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: docs\\Learn\\Getting-Started.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Learn\\Getting-Started.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2467678Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: docs\\Learn\\Installation.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Learn\\Installation.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2470247Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: docs\\Learn\\Quick-Start.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Learn\\Quick-Start.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2472897Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: docs\\Learn\\Platform-Overview.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Learn\\Platform-Overview.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2475179Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: docs\\Learn\\Platform-Architecture.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Learn\\Platform-Architecture.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2477736Z"
+    },
+    {
+      "Category": "Documentation",
+      "Check": "Required Document: docs\\Learn\\Command-Reference.md",
+      "Status": "PASS",
+      "Details": "Required path is present.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\docs\\Learn\\Command-Reference.md",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2480242Z"
+    },
+    {
+      "Category": "Terraform",
+      "Check": "Terraform Configuration Discovery",
+      "Status": "PASS",
+      "Details": "10 Terraform files discovered.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.2541565Z"
+    },
+    {
+      "Category": "Terraform",
+      "Check": "Local Terraform State",
+      "Status": "FAIL",
+      "Details": "Terraform state file detected in the repository.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\terraform.tfstate",
+      "Recommendation": "Remove the state file from source control and use a secured remote backend.",
+      "Timestamp": "2026-07-11T13:44:07.2746429Z"
+    },
+    {
+      "Category": "Terraform",
+      "Check": "Local Terraform State",
+      "Status": "FAIL",
+      "Details": "Terraform state file detected in the repository.",
+      "Path": "C:\\Users\\ToddCrow\\Source\\blackknight-one\\terraform\\terraform.tfstate.backup",
+      "Recommendation": "Remove the state file from source control and use a secured remote backend.",
+      "Timestamp": "2026-07-11T13:44:07.2748901Z"
+    },
+    {
+      "Category": "Terraform",
+      "Check": "Terraform CLI",
+      "Status": "PASS",
+      "Details": "Terraform CLI available. Version: 1.15.7",
+      "Path": "C:\\Users\\ToddCrow\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Hashicorp.Terraform_Microsoft.Winget.Source_8wekyb3d8bbwe\\terraform.exe",
+      "Recommendation": "",
+      "Timestamp": "2026-07-11T13:44:07.7819276Z"
+    }
+  ]
+}
