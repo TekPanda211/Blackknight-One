@@ -321,7 +321,7 @@ try {
         Engine = [PSCustomObject]@{
             Name        = "Terraform"
             DisplayName = "Terraform Engineering Engine"
-            Version     = "0.6.0-alpha"
+            Version     = "0.7.0"
             Status      = $health
         }
 

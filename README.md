@@ -2,445 +2,299 @@
   <img src="docs/images/blackknight-one-hero.png" alt="BLACKKNIGHT ONE" width="900">
 </p>
 
-# BLACKKNIGHT ONE
+# BlackKnight One
 
-## Enterprise Identity Engineering Platform
-
-# One Source of Truth for Enterprise Identity Engineering
-
-Blackknight One is an open-source platform designed to help organizations **discover, correlate, validate, understand, and automate** Microsoft Entra environments through Microsoft Graph, Infrastructure as Code, and engineering-driven workflows.
+Infrastructure Assessment Platform for Terraform, Microsoft Graph, Identity, and Security
 
 ---
 
-# Modern identity isn't simply administered.
+## Overview
 
-**Modern identity is engineered.**
+BlackKnight One is an enterprise PowerShell platform designed to assess, analyze, and validate modern cloud infrastructure.
 
-Today's Microsoft Entra environments extend far beyond users and groups. They include Conditional Access, Identity Governance, authentication methods, administrative roles, Infrastructure as Code, CI/CD pipelines, service principals, applications, and automation.
-
-Managing these workloads independently creates fragmented visibility and inconsistent engineering practices.
-
-Blackknight One exists to unify these domains into a single engineering platform.
-
-Our vision is simple.
-
-> **One Source of Truth for Enterprise Identity Engineering**
+The platform combines Terraform engineering, Microsoft Graph discovery, identity analysis, and security assessments into a single dashboard-driven experience with standardized reporting and executive scoring.
 
 ---
 
-# Our North Star
+## Platform Capabilities
 
-Enterprise identity has become the control plane for modern organizations.
+### Terraform
 
-As environments continue to grow across Microsoft Entra, Microsoft 365, Infrastructure as Code, and DevSecOps pipelines, identity information becomes fragmented across portals, APIs, scripts, repositories, and operational tooling.
+- Complete Infrastructure Assessment
+- HCL Discovery Engine v2
+- Security Analysis
+- Configuration Validation
+- Execution Plan Analysis
+- Two-Phase Drift Detection
+- Architecture Scoring
+- Dependency Mapping
+- Executive Reporting
 
-Blackknight One brings those worlds together.
+### Microsoft Graph
 
-Every service, engine, report, and dashboard is designed to move organizations closer to a single engineering truth.
-
-Our mission is to make Enterprise Identity Engineering:
-
-- Measurable
-- Repeatable
-- Validatable
-- Automatable
-
----
-
-# The Five Engineering Pillars
-
-Everything inside Blackknight One aligns to five engineering principles.
-
-```text
-Discover
-      │
-      ▼
-Correlate
-      │
-      ▼
-Validate
-      │
-      ▼
-Understand
-      │
-      ▼
-Automate
-```
-
-## Discover
-
-Collect authoritative information from supported platforms.
-
-Examples include:
-
-- Microsoft Entra ID
-- Microsoft Graph
-- Microsoft 365
-- Terraform (planned)
-
----
-
-## Correlate
-
-Relationships create intelligence.
-
-Blackknight One correlates identities, authentication, authorization, licensing, governance, and infrastructure to provide operational context.
-
----
-
-## Validate
-
-Engineering requires validation.
-
-Blackknight One validates:
-
-- Identity
-- Trust
-- Configuration
-- Platform Health
-- Infrastructure as Code
-- CI/CD (planned)
-
----
-
-## Understand
-
-Raw inventory has limited value.
-
-Blackknight One transforms collected information into:
-
-- Confidence Scores
-- Identity Intelligence
-- Recommendations
-- Operational Insights
-- Drift Detection (planned)
-
----
-
-## Automate
-
-Engineering should be repeatable.
-
-Blackknight One is designed to integrate with:
-
-- Microsoft Graph
-- PowerShell
-- Terraform
-- GitHub Actions (planned)
-- Azure DevOps (planned)
-- REST APIs (planned)
-
----
-
-# Platform Architecture
-
-Blackknight One follows a layered architecture.
-
-```text
-                    BLACKKNIGHT ONE
-        Enterprise Identity Engineering Platform
-
-                  External Data Sources
-────────────────────────────────────────────────────
-
- Microsoft Graph      Terraform      Future Providers
-
-            │              │               │
-            └──────────────┼───────────────┘
-                           │
-
-                  Discovery Services
-
-      Users
-      Groups
-      Domains
-      Licensing
-      Conditional Access
-      Authentication
-      Directory Roles
-
-                           │
-
-                   Platform Services
-
-      Logging
-      Validation
-      Reporting
-      Configuration
-      Service Registry
-      Engine Registry
-
-                           │
-
-                 Assessment Engines
-
-      Identity
-      Trust
-      Correlation
-      Governance (planned)
-      Operations (planned)
-      Terraform (planned)
-
-                           │
-
-                 Correlation Layer
-
-      Identity Graph
-      Administrative Exposure
-      Recommendations
-
-                           │
-
-                  Confidence Engine
-
-      Identity
-      Trust
-      Governance
-      Operations
-      Validation
-
-                           │
-
-                 Experience Layer
-
-      Dashboard
-      JSON Reports
-      Power BI (planned)
-      REST API (planned)
-```
-
----
-
-# Current Capabilities
-
-Current platform capabilities include:
-
-- Microsoft Graph Discovery
 - Tenant Discovery
-- User Inventory
-- Group Inventory
-- Domain Inventory
-- Licensing Inventory
-- Conditional Access Discovery
-- Named Locations
-- Authentication Method Analysis
-- MFA Registration Analysis
-- Passwordless Readiness
-- SSPR Readiness
-- Directory Role Analysis
-- Identity Correlation
-- Identity Graph
-- Trust Assessment
+- Graph Assessment
+- Identity Inventory
+- User Discovery
+- Group Discovery
+- Device Discovery
+- Service Principal Discovery
+- License Discovery
+
+### Reporting
+
+- Executive Assessment Reports
+- JSON Export
 - Confidence Scoring
-- Platform Dashboard
-- JSON Reporting
-- Platform Validation
+- Security Findings
+- Architecture Findings
+- Release Recommendations
 
 ---
 
-# Current Assessment Engines
+# Installation
 
-| Engine | Status |
-|---------|--------|
-| Identity | Available |
-| Trust | Available |
-| Correlation | Available |
-| Validation | In Development |
-| Governance | Planned |
-| Operations | Planned |
-| Terraform | Planned |
-
----
-
-# Documentation
-
-Blackknight One documentation is organized into three major areas.
-
-## Learn
-
-New to the platform?
-
-Start here.
-
-- Getting Started
-- Installation
-- Quick Start
-- Platform Overview
-- Platform Architecture
-- Command Reference
-
-📁 `docs/Learn`
-
----
-
-## Build
-
-Interested in extending the platform?
-
-Learn how Blackknight One is engineered.
-
-Topics include:
-
-- Platform
-- Services
-- Schemas
-- Terraform
-- Development
-- Registries
-
-📁 `docs/Build`
-
----
-
-## Operate
-
-Using Blackknight One in production?
-
-Explore:
-
-- Concepts
-- Engines
-- Examples
-- Governance
-- Security
-- Trust
-- Roadmap
-
-📁 `docs/Operate`
+```powershell
+Import-Module .\scripts\PowerShell\Platform\Blackknight-Platform.psm1
+```
 
 ---
 
 # Quick Start
 
+Launch the platform dashboard.
+
 ```powershell
-Import-Module .\scripts\PowerShell\Platform\Blackknight-Platform.psm1 -Force
-
-Test-BKPlatform
-
-Connect-BKGraph
-
-Get-BKTenant
-
-.\scripts\PowerShell\Identity\Invoke-BKIdentityDiscovery.ps1
-
-.\scripts\PowerShell\Trust\Invoke-BKTrustDiscovery.ps1
-
-.\scripts\PowerShell\Correlation\Invoke-BKCorrelation.ps1
-
 Show-BKDashboard
 ```
 
-Within minutes you'll have:
-
-- Tenant Inventory
-- Identity Inventory
-- Trust Assessment
-- Directory Role Analysis
-- Identity Correlation
-- Confidence Scores
-- Recommendations
-- Dashboard
-- JSON Reports
+The dashboard provides access to all assessment engines without requiring users to memorize PowerShell commands.
 
 ---
 
-# Engineering Principles
+# Dashboard
 
-Blackknight One follows several guiding principles.
+```
+============================================================
+                  BLACKKNIGHT ONE
+============================================================
 
-- Evidence over assumptions.
-- Correlation over isolated reporting.
-- Validation before deployment.
-- Infrastructure as Code by design.
-- Automation as the default.
-- Modular architecture.
-- Reusable services.
-- Open engineering standards.
-- Confidence through measurable evidence.
+Terraform
+------------------------------------------------------------
+1. Complete Terraform Assessment
+2. Terraform HCL Discovery
+3. Terraform Security Analysis
+4. Terraform Drift Detection
+5. Terraform Plan Analysis
 
-These principles guide every new feature, service, and assessment engine.
+Microsoft Graph
+------------------------------------------------------------
+6. Tenant Discovery
+7. Graph Assessment
+8. Identity Assessment
+
+Platform
+------------------------------------------------------------
+9. Reports
+10. Settings
+11. About
+12. Exit
+```
+
+---
+
+# Terraform Assessment
+
+The Terraform Assessment Engine combines multiple analysis engines into a single assessment.
+
+Assessment workflow
+
+```
+Inventory
+
+↓
+
+HCL Discovery
+
+↓
+
+Security Analysis
+
+↓
+
+Configuration Validation
+
+↓
+
+Execution Plan Analysis
+
+↓
+
+Two-Phase Drift Confirmation
+
+↓
+
+Executive Assessment
+```
+
+Assessment output includes:
+
+- Infrastructure Inventory
+- Architecture Score
+- Security Score
+- Configuration Health
+- Drift Analysis
+- Executive Findings
+- Release Recommendation
+
+---
+
+# HCL Discovery Engine
+
+The HCL Discovery Engine performs deep parsing of Terraform configurations.
+
+Collected information includes:
+
+- Providers
+- Required Providers
+- Resources
+- Data Sources
+- Variables
+- Outputs
+- Modules
+- Local Values
+- Backend Configuration
+- Imports
+- Moved Blocks
+- Dependencies
+- Terraform Graph
+- Version Constraints
+
+---
+
+# Terraform Security Analyzer
+
+The Security Analyzer evaluates Terraform configurations for security risks and infrastructure best practices.
+
+Current analysis includes:
+
+- Backend Configuration
+- State Storage
+- Sensitive Variables
+- Sensitive Outputs
+- Provider Configuration
+- Security Findings
+- Executive Recommendations
+
+Output includes:
+
+- Security Score
+- Security Health
+- Security Findings
+- Executive Recommendation
+
+---
+
+# Microsoft Graph Platform
+
+The Microsoft Graph platform performs live tenant assessments.
+
+Current capabilities include:
+
+- Tenant Discovery
+- Organization Inventory
+- Domain Inventory
+- User Inventory
+- Group Inventory
+- Device Inventory
+- Service Principal Inventory
+- License Inventory
+
+Assessment output includes:
+
+- Dataset Coverage
+- Permission Coverage
+- Inventory Coverage
+- Executive Findings
+- Assessment Confidence
+
+---
+
+# Project Structure
+
+```
+BlackKnight-One
+│
+├── docs
+├── reports
+├── scripts
+│   └── PowerShell
+│       ├── Platform
+│       ├── Terraform
+│       ├── Graph
+│       ├── Identity
+│       └── Reporting
+│
+├── tests
+├── README.md
+├── CHANGELOG.md
+└── LICENSE
+```
+
+---
+
+# Current Components
+
+| Component | Status |
+|-----------|--------|
+| Dashboard | Complete |
+| Terraform Assessment | Complete |
+| HCL Discovery Engine v2 | Complete |
+| Terraform Security Analyzer | Complete |
+| Terraform Plan Analysis | Complete |
+| Terraform Drift Detection | Complete |
+| Microsoft Graph Discovery | Complete |
+| Microsoft Graph Assessment | Complete |
+| JSON Reporting | Complete |
 
 ---
 
 # Roadmap
 
-## v0.5.x
+## Version 0.7.x
 
-- Identity Discovery
-- Trust Discovery
-- Correlation Engine
-- Dashboard
-- Confidence Scoring
-- Platform Validation
+- Identity Assessment Engine
+- Conditional Access Assessment
+- Privileged Identity Assessment
+- Application Permission Assessment
+- Unified Executive Dashboard
+- HTML Reporting
 
----
+## Future Releases
 
-## v0.6.x
-
-- Terraform Discovery
-- Terraform State Analysis
-- Identity as Code
-- CI/CD Validation
-- Conditional Access Simulation
-- Drift Detection
+- Exchange Online Assessment
+- SharePoint Assessment
+- Intune Assessment
+- Azure Subscription Assessment
+- Microsoft Defender Assessment
+- Microsoft 365 Security Assessment
 
 ---
 
-## v0.7.x
+# Requirements
 
-- REST API
-- Plugin Framework
-- HTML Reports
-- Power BI Integration
-- Historical Trending
-- Multi-Tenant Assessments
-- GDAP Optimization
-
----
-
-# Why Blackknight One?
-
-Traditional tools answer questions like:
-
-> What exists?
-
-Blackknight One goes further.
-
-It helps answer:
-
-- Why does it matter?
-- What changed?
-- What is at risk?
-- How confident are we?
-- What should we improve next?
-- How do we validate changes before production?
-
-That shift—from inventory to engineering intelligence—is what defines Blackknight One.
+- PowerShell 7.4 or later
+- Terraform CLI
+- Microsoft Graph PowerShell SDK
 
 ---
 
 # Contributing
 
-Contributions are welcome.
-
-Whether you're improving documentation, building assessment engines, enhancing Terraform support, or expanding identity intelligence, every contribution helps move the platform closer to its North Star.
-
-Please review the documentation in **docs/Build** before contributing.
+Contributions, feature requests, bug reports, and pull requests are welcome.
 
 ---
 
 # License
 
-This project is licensed under the MIT License.
-
----
-
-# The Journey
-
-Blackknight One is more than a collection of PowerShell modules.
-
-It is a long-term effort to build an open, extensible platform for Enterprise Identity Engineering—one that helps organizations confidently discover, correlate, validate, understand, and automate their identity environments.
-
-Every release moves us closer to our North Star.
-
-# One Source of Truth for Enterprise Identity Engineering
+MIT License

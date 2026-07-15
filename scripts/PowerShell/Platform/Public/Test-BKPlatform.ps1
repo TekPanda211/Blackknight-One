@@ -1351,37 +1351,83 @@ function Test-BKPlatform {
             }
 
             $localStateFiles = @(
-                Get-ChildItem `
-                    -Path $terraformRoot `
-                    -Include "*.tfstate", "*.tfstate.backup" `
-                    -File `
-                    -Recurse `
-                    -ErrorAction SilentlyContinue
-            )
+    Get-ChildItem `
+        -LiteralPath $repoRoot `
+        -Include "*.tfstate", "*.tfstate.backup" `
+        -File `
+        -Recurse `
+        -ErrorAction SilentlyContinue |
+        Where-Object {
+            $_.FullName -notmatch '[\\/]\.terraform[\\/]'
+        }
+)
 
-            if ($localStateFiles.Count -eq 0) {
-                Add-BKValidationResult `
-                    -Category "Terraform" `
-                    -Check "Terraform State Hygiene" `
-                    -Status "PASS" `
-                    -Domain "Operational" `
-                    -Severity "Informational" `
-                    -Details "No local Terraform state files detected in the repository." `
-                    -Path $terraformRoot
-            }
-            else {
-                foreach ($stateFile in $localStateFiles) {
-                    Add-BKValidationResult `
-                        -Category "Terraform" `
-                        -Check "Local Terraform State" `
-                        -Status "FAIL" `
-                        -Domain "Operational" `
-                        -Severity "Critical" `
-                        -Details "Terraform state file detected in the repository." `
-                        -Path $stateFile.FullName `
-                        -Recommendation "Remove the state file from source control and use a secured remote backend."
-                }
-            }
+foreach ($stateFile in $localStateFiles) {
+    $relativeStatePath = [System.IO.Path]::GetRelativePath(
+        $repoRoot,
+        $stateFile.FullName
+    )
+
+    $trackedStateFiles = @(
+        git -C $repoRoot ls-files -- $relativeStatePath 2>$null
+    )
+
+    git -C $repoRoot check-ignore -- $relativeStatePath 2>$null |
+        Out-Null
+
+    $isIgnored = $LASTEXITCODE -eq 0
+    $isTracked = $trackedStateFiles.Count -gt 0
+
+    if ($isTracked) {
+        Add-BKValidationResult `
+            -Domain "Operational" `
+            -Category "Terraform" `
+            -Check "Tracked Terraform State" `
+            -Status "FAIL" `
+            -Severity "Critical" `
+            -Details (
+                "Terraform state file is tracked by Git: " +
+                $relativeStatePath
+            ) `
+            -Recommendation (
+                "Remove the state file from source control and rotate " +
+                "credentials or secrets that may have been exposed."
+            )
+    }
+    elseif ($isIgnored) {
+        Add-BKValidationResult `
+            -Domain "Operational" `
+            -Category "Terraform" `
+            -Check "Ignored Local Terraform State" `
+            -Status "WARN" `
+            -Severity "Medium" `
+            -Details (
+                "Local Terraform state exists but is ignored by Git: " +
+                $relativeStatePath
+            ) `
+            -Recommendation (
+                "Use a secured remote backend before shared or " +
+                "production deployment."
+            )
+    }
+    else {
+        Add-BKValidationResult `
+            -Domain "Operational" `
+            -Category "Terraform" `
+            -Check "Unprotected Local Terraform State" `
+            -Status "FAIL" `
+            -Severity "High" `
+            -Details (
+                "Terraform state exists and is neither tracked nor " +
+                "confirmed as ignored: " +
+                $relativeStatePath
+            ) `
+            -Recommendation (
+                "Add Terraform state patterns to .gitignore or move " +
+                "state to a secured remote backend."
+            )
+    }
+}
 
             $terraformCommand = Get-Command `
                 -Name "terraform" `
