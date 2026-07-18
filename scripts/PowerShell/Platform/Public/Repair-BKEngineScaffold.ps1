@@ -149,7 +149,7 @@ $parameterText
 $forwardingText
     }
 
-    Invoke-BKEngine -Name "$($engine.Name)" -Operation "Assessment" -Parameters `$parameters -PassThru:$passThruExpression
+    Invoke-BKRegisteredEngine -Name "$($engine.Name)" -Operation "Assessment" -Parameters `$parameters -PassThru:$passThruExpression
 }
 "@
 
@@ -192,3 +192,4 @@ $forwardingText
 
     $result | Format-List | Out-Host
 }
+

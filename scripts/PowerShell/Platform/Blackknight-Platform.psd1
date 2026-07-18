@@ -258,3 +258,4 @@ Fixed:
 
     DefaultCommandPrefix = ""
 }
+

@@ -304,7 +304,7 @@ function $assessmentCommand {
         OutputPath = `$OutputPath
     }
 
-    Invoke-BKEngine -Name "$Name" -Operation "Assessment" -Parameters `$parameters -PassThru:`$PassThru.IsPresent
+    Invoke-BKRegisteredEngine -Name "$Name" -Operation "Assessment" -Parameters `$parameters -PassThru:`$PassThru.IsPresent
 }
 "@
         Set-Content -LiteralPath $wrapperPath -Value $wrapperContent -Encoding utf8
@@ -367,3 +367,4 @@ function $assessmentCommand {
         return $result
     }
 }
+

@@ -101,7 +101,7 @@ function Show-BKDashboard {
         Write-BKAssessmentHeader -Title $selectedEngine.DisplayName -Subtitle $selectedEngine.Description
 
         try {
-            $result = Invoke-BKEngine -Name $selectedEngine.Name -Operation Assessment -PassThru
+            $result = Invoke-BKRegisteredEngine -Name $selectedEngine.Name -Operation Assessment -PassThru
             if ($PassThru.IsPresent) { return $result }
             if ($null -ne $result) { Write-BKDashboardResult -Result $result }
         }
@@ -114,4 +114,5 @@ function Show-BKDashboard {
         }
     } while (-not $Once.IsPresent)
 }
+
 

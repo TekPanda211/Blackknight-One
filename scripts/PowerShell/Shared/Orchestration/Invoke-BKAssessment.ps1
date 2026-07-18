@@ -17,7 +17,7 @@ function Invoke-BKAssessmentCore {
 
     foreach ($item in $registry) {
         try {
-            $result = Invoke-BKEngine -Name $item.Name -Operation Assessment -Parameters @{ PassThru = $true }
+            $result = Invoke-BKRegisteredEngine -Name $item.Name -Operation Assessment -PassThru
             if ($null -ne $result) { [void](Add-BKAssessmentResult -Context $Context -Result $result) }
         }
         catch {
@@ -44,3 +44,4 @@ function Invoke-BKAssessmentCore {
     if ($PassThru) { return $output }
     $output
 }
+
